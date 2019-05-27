@@ -4,7 +4,7 @@ blogs是blogs系列框架，默认数据库引擎采用mysql,如需要其他数�
 
 1 如何启动
     管理后台：blogs-admin
-        
+            
         安装环境
             框架需要redis服务，请自行下载或者双击project/redis/redis-启动.bat
         配置环境
