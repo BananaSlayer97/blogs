@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: commonHead('我的中心')"></head>
+<body>
+
+<div th:replace="common/header :: commonHeader"></div>
+
+<div class="layui-container fly-marginTop fly-user-main">
+
+
+    <div th:replace="common/user_nav"></div>
+
+
+
+  <div class="fly-panel fly-panel-user">
+
+    <div class="fly-msg" style="margin-top: 15px;" id="checkEmail"></div>
+
+
+      <!--容器-->
+    <div class="layui-tab layui-tab-brief" lay-filter="user">
+
+        <p id="title"></p>
+
+        <div class="layui-tab-content" style="padding: 20px 20px;" id="container" >
+
+
+        </div>
+
+    </div>
+
+      <!--用户信息-->
+      <template id="info_template">
+
+          <div class="layui-tab-content" style="padding: 20px 0;">
+
+              <!-- 基本信息 -->
+              <div class="layui-form layui-form-pane layui-tab-item layui-show" >
+
+                  <!-- 我的资料 -->
+                  <form method="post" class="layui-form">
+
+                  <!-- one -->
+                  <div class="layui-form-item">
+                      <label for="L_email" class="layui-form-label">邮箱</label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="L_email" name="email" required="required" lay-verify="email" autocomplete="off" value="{{d.user.email}}" class="layui-input"/>
+                      </div>
+                      <div class="layui-form-mid layui-word-aux">如果您在邮箱已激活的情况下，变更了邮箱，需<a href="activate.html" style="font-size: 12px; color: #4f99cf;">重新验证邮箱</a></div>
+                  </div>
+
+                  <!-- two -->
+                  <div class="layui-form-item">
+
+                      <!-- two 1 -->
+                      <label for="L_username" class="layui-form-label">昵称</label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="L_username" name="name" required="required" lay-verify="required" autocomplete="off" value="{{d.user.name}}" class="layui-input"/>
+                      </div>
+
+                      <!-- two 2 -->
+                      <div class="layui-inline">
+                          <div class="layui-input-inline">
+                              <input type="radio" name="sex" value="0" checked="checked" title="男"/>
+                              <input type="radio" name="sex" value="1" title="女"/>
+                          </div>
+                      </div>
+
+                  </div>
+
+                  <!-- three -->
+                  <div class="layui-form-item">
+                      <label for="L_city" class="layui-form-label">城市</label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="L_city" name="address" autocomplete="off" value="{{d.user.address}}" class="layui-input"/>
+                      </div>
+                  </div>
+
+                  <!-- four -->
+                  <div class="layui-form-item layui-form-text">
+                      <div class="layui-form-item">
+                          <label for="L_sign" class="layui-form-label">签名</label>
+                          <div class="layui-input-block">
+                              <textarea   placeholder="随便写些什么刷下存在感" id="L_sign"  name="signature" autocomplete="off" class="layui-textarea" style="height: 80px;"></textarea>
+                          </div>
+                      </div>
+
+                      <div class="layui-form-item">
+                          <input type="hidden" name="id" value="{{d.user.id}}" class="layui-input"/>
+                          <button class="layui-btn" key="set-mine" lay-filter="*" lay-submit="">确认修改</button>
+                      </div>
+                  </div>
+
+                  </form>
+
+              </div>
+          </div>
+
+      </template>
+
+      <!--我的发布-->
+      <template id="publish_template">
+              <div class="layui-tab-item layui-show">
+                  <ul class="mine-view jie-row">
+                      {{#  layui.each(d.publish, function(index, item){ }}
+                      <li>
+                          <a class="jie-title" href="jie/detail?article_id={{item.id}}" target="_blank">{{item.title}}</a>
+                          <i>{{item.createtime}}</i>
+                          <a class="mine-edit" href="jie/update?article_id={{item.id}}">编辑</a>
+                          <em>{{item.comment_number}}答</em>
+                      </li>
+
+                      {{#  }); }}
+
+                      {{#  if(d.publish.length == 0){ }}
+                      你还没用发表过呢，快去发表一条吧！
+                      {{#  } }}
+                  </ul>
+              </div>
+
+      </template>
+
+      <!--我的收藏-->
+      <template id="collect_template">
+          <div class="layui-tab-item layui-show">
+              <ul class="mine-view jie-row">
+                  {{#  layui.each(d.collect,function(index, item){ }}
+                  <li>
+                      <a class="jie-title" href="/jie/detail?id={{item.object_id}}" target="_blank">{{item.title}}</a>
+                      <i>{{item.createtime}}</i>
+                  </li>
+                  {{#  }); }}
+                  {{#  if(d.collect.length == 0){ }}
+                  你还没有收藏呢，快去转转吧！
+                  {{#  } }}
+              </ul>
+              <div id="LAY_page1"></div>
+          </div>
+
+      </template>
+
+      <!--我的消息-->
+      <template id="message_template">
+          <div class="fly-panel fly-panel-user" pad20="">
+              <div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_msg" style="margin-top: 15px;">
+
+                  <!--  <button class="layui-btn layui-btn-danger" id="LAY_delallmsg">清空全部消息</button>-->
+                  <div  id="LAY_minemsg" style="margin-top: 10px;">
+                      <ul class="mine-msg">
+                          {{#  layui.each(d.message, function(index,item){ }}
+                          <li data-id="">
+
+                              <blockquote class="layui-elem-quote">
+                                  <a href="user/home?id={{item.user_id}}">{{item.name}}</a> :
+                                  {{item.content}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                  来自于: <a href="jie/detail?article_id={{item.object_id}}"> {{item.title}}</a>
+                              </blockquote>
+
+                              <p>
+                                  <span>{{item.createtime}}</span>
+                                  <!--<a href="javascript:;" class="layui-btn layui-btn-small layui-btn-danger fly-delete">删除</a>-->
+                              </p>
+                          </li>
+                          {{#  }); }}
+
+                          {{#  if(d.message.length == 0){ }}
+                             <div class="">你还没有任何消息呢...</div>
+                          {{#  } }}
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </template>
+
+      <!--基本设置-->
+      <template id="set_template">
+
+          <div class="layui-tab-content" style="padding: 20px 0;" id="pass">
+
+              <div class="layui-form layui-form-pane layui-tab-item layui-show" >
+                  <!-- 我的资料 -->
+                  <form method="post" class="layui-form">
+
+                      <!-- 头像 -->
+                      <div class="layui-form">
+                          <div class="layui-form-item">
+                              <div class="avatar-add">
+                                  <p>建议尺寸168*168，支持jpg、png、gif，最大不能超过50KB</p>
+
+                                  <button type="button" class="layui-btn upload-img" id="headImg">
+                                      <i class="layui-icon">&#xe67c;</i>上传头像
+                                  </button>
+
+                                  <img class="layui-upload-img" src="{{d.user.headportrait}}"/>
+
+                                  <span class="loading"></span>
+
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- 密码 -->
+                      <div class="layui-form layui-form-pane ">
+                          <form action="/user/repass" method="post">
+                              <div class="layui-form-item">
+                                  <label for="L_nowpass" class="layui-form-label">当前密码</label>
+                                  <div class="layui-input-inline">
+                                      <input value="{{d.user.password}}" type="password" id="L_nowpass"  required="required" lay-verify="required" autocomplete="off" class="layui-input"/>
+                                  </div>
+                              </div>
+                              <div class="layui-form-item">
+                                  <label for="L_pass" class="layui-form-label">新密码</label>
+                                  <div class="layui-input-inline">
+                                      <input type="password" id="L_pass" name="userPassword" required="required" lay-verify="required" autocomplete="off" class="layui-input"/>
+                                  </div>
+                                  <div class="layui-form-mid layui-word-aux">6到16个字符</div>
+                              </div>
+                              <div class="layui-form-item">
+                                  <label for="L_repass" class="layui-form-label">确认密码</label>
+                                  <div class="layui-input-inline">
+                                      <input type="password" id="L_repass" required="required" lay-verify="required" autocomplete="off" class="layui-input"/>
+                                  </div>
+                              </div>
+                              <div class="layui-form-item">
+                                  <button class="layui-btn" key="set-mine" lay-filter="*" lay-submit="">确认修改</button>
+                              </div>
+                          </form>
+                      </div>
+                  </form>
+
+              </div>
+          </div>
+       </template>
+
+      <!--我的粉丝-->
+      <template id="fans_template">
+          <div class="layui-tab-item layui-show">
+              <ul class="mine-view jie-row">
+                  {{#  layui.each(d.fans, function(index, item){ }}
+                  <li>
+                      <img src="{{item.headportrait}}"  style="height: 50px;width: 50px;" alt=""/>
+                       <h3><a  href="user/home?id={{item.user_id}}" target="_blank">{{item.name}}</a></h3>
+                      <i>{{item.createtime}}</i>
+                  </li>
+
+                  {{#  }); }}
+
+                  {{#  if(d.fans.length == 0){ }}
+                     <div class="">你还没有任何粉丝呢...</div>
+                  {{#  } }}
+              </ul>
+          </div>
+
+      </template>
+
+      <!--我的关注-->
+      <template id="follow_template">
+          <div class="layui-tab-item layui-show">
+              <ul class="mine-view jie-row">
+                  {{#  layui.each(d.follow, function(index, item){ }}
+                  <li>
+                      <img src="{{item.headportrait}}"  style="height: 50px;width: 50px;border: #00FF00 solid 1px" alt=""/>
+                      <h3> <a  href="user/home?id={{item.follow_id}}" target="_blank">{{item.name}}</a></h3>
+                      <i>关注时间:{{item.createtime}}</i>
+                  </li>
+
+                  {{#  }); }}
+
+                  {{#  if(d.follow.length == 0){ }}
+                        <div class="">你还没有关注任何人呢...</div>
+                  {{#  } }}
+              </ul>
+          </div>
+
+      </template>
+
+
+
+  </div>
+
+</div>
+
+<input id="user_id" th:value="${user['id']}" type="hidden"/>
+
+<div th:replace="common/footer :: commonFooter"></div>
+
+<script th:src="@{/static/assets/res/layui/layui.js}"></script>
+
+<script th:src="@{/static/assets/res/js/user/index.js}"></script>
+
+<script th:replace="common/bottom :: commonBottom"></script>
+
+
+</body>
+</html>

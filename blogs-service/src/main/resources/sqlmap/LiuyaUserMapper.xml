@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+* 代码为自动生成 Created by www.magicalcoder.com
+* 如果你改变了此类 read 请将此行删除
+*  欢迎加入官方QQ群:323237052
+-->
+<mapper namespace="com.Westworld.blogs.service.liuyauser.mapper.LiuyaUserMapper">
+    <!-- LiuyaUser -->
+
+    <resultMap id="resultMap" type="LiuyaUser">
+                <id column="id" property="id"/>
+                <result column="name" property="name" />
+                <result column="email" property="email" />
+                <result column="signature" property="signature" />
+                <result column="headportrait" property="headportrait" />
+                <result column="password" property="password" />
+                <result column="createtime" property="createtime" />
+                <result column="gender" property="gender" />
+                <result column="age" property="age" />
+                <result column="fans" property="fans" />
+                <result column="iq" property="iq" />
+                <result column="reply_number" property="replyNumber" />
+                <result column="address" property="address" />
+                <result column="class_name" property="className" />
+                <result column="company" property="company" />
+                <result column="status" property="status" />
+                <result column="nickname" property="nickname" />
+                <result column="phone" property="phone" />
+                <result column="integral" property="integral" />
+                <result column="want_city" property="wantCity" />
+                <result column="job" property="job" />
+                <result column="role_id" property="roleId" />
+                <result column="last_login" property="lastLogin" />
+                <result column="school_id" property="schoolId" />
+                <result column="follow" property="follow" />
+    </resultMap>
+    <!-- 查询单个实体 -->
+    <select id="getModel" parameterType="hashmap" resultMap="resultMap">
+        select  <choose><when test="NotIgnore_!=null and NotIgnore_"><include refid="selectSqlNotIgnoreModel"/> </when><otherwise><include refid="selectSqlIgnoreModel"/></otherwise></choose>
+        from  <include refid="tableSql"/>  where 1=1 <include refid="whereSqlModel"/> <include refid="orderGroupLimit"/>
+    </select>
+    <!--根据主键 查询单个实体 -->
+    <select id="getModelByPk" parameterType="hashmap" resultMap="resultMap">
+        select  <choose><when test="NotIgnore_!=null and NotIgnore_"><include refid="selectSqlNotIgnoreModel"/> </when><otherwise><include refid="selectSqlIgnoreModel"/></otherwise></choose>
+        from  <include refid="tableSql"/>  <include refid="magicalcoderPkWhereSql"/>
+    </select>
+    <!-- 查询一组实体 -->
+    <select id="getModelList" parameterType="hashmap" resultMap="resultMap">
+        select  <choose><when test="NotIgnore_!=null and NotIgnore_"><include refid="selectSqlNotIgnoreModel"/> </when><otherwise><include refid="selectSqlIgnoreModel"/></otherwise></choose>
+        from  <include refid="tableSql"/>  where 1=1 <include refid="whereSqlModel"/> <include refid="orderGroupLimit"/>
+    </select>
+    <!-- 查询一组实体 in 语句-->
+    <select id="getModelInList" parameterType="hashmap" resultMap="resultMap">
+        select  <choose><when test="NotIgnore_!=null and NotIgnore_"><include refid="selectSqlNotIgnoreModel"/> </when><otherwise><include refid="selectSqlIgnoreModel"/></otherwise></choose>
+        from  <include refid="tableSql"/>  where  `id` in
+        <foreach item="id" index="index" collection="idList" open="(" separator="," close=")">#{id}</foreach>
+        <include refid="orderGroupLimit"/>
+    </select>
+    <!-- 查询一组实体的数量 -->
+    <select id="getModelListCount" parameterType="hashmap" resultType="int">
+        select count(1)  from  <include refid="tableSql"/>  where 1=1 <include refid="whereSqlModel"/> <include refid="orderGroupLimit"/>
+    </select>
+    <!-- 插入单个实体 遇到入参null转换成数据库NULL-->
+    <insert id="insertModel" parameterType="LiuyaUser"  useGeneratedKeys="true" keyProperty="id" >
+        insert into <include refid="tableSql"/> (<include refid="douFieldSql"/>) values(<include refid="douValueSql"/>)
+    </insert>
+    <!-- 替换单个实体 如果没有则插入 遇到入参null转换成数据库NULL-->
+    <insert id="replaceModel" parameterType="LiuyaUser"  useGeneratedKeys="true" keyProperty="id" >
+        replace into <include refid="tableSql"/> (<include refid="douFieldSql"/>) values(<include refid="douValueSql"/>)
+    </insert>
+    <!-- 插入单个实体 遇到入参null转换成数据库默认值-->
+    <insert id="insertModelWithoutNull" parameterType="LiuyaUser"  useGeneratedKeys="true" keyProperty="id" >
+        insert into <include refid="tableSql"/> (<include refid="douFieldWithoutNullSql"/>) values(<include refid="douValueWithoutNullSql"/>)
+    </insert>
+    <!-- 替换单个实体 如果没有则插入 遇到入参null转换成数据库默认值-->
+    <insert id="replaceModelWithoutNull" parameterType="LiuyaUser"  useGeneratedKeys="true" keyProperty="id" >
+        replace into <include refid="tableSql"/> (<include refid="douFieldWithoutNullSql"/>) values(<include refid="douValueWithoutNullSql"/>)
+    </insert>
+    <!-- 批量插入一组实体 -->
+    <insert id="batchInsertModel" parameterType="java.util.List"   useGeneratedKeys="true" keyProperty="id" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            insert into <include refid="tableSql"/> (<include refid="batchDouFieldSql"/>) values (<include refid="batchDouValueSql"/>)
+        </foreach>
+    </insert>
+    <!-- 批量替换一组实体 -->
+    <insert id="batchReplaceModel" parameterType="java.util.List"  useGeneratedKeys="true" keyProperty="id" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            replace into <include refid="tableSql"/> (<include refid="batchDouFieldSql"/>) values (<include refid="batchDouValueSql"/>)
+        </foreach>
+    </insert>
+    <insert id="batchInsertModelWithoutNull" parameterType="java.util.List"   useGeneratedKeys="true" keyProperty="id" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            insert into <include refid="tableSql"/> (<include refid="batchDouFieldWithoutNullSql"/>) values (<include refid="batchDouValueWithoutNullSql"/>)
+        </foreach>
+    </insert>
+    <insert id="batchReplaceModelWithoutNull" parameterType="java.util.List"  useGeneratedKeys="true" keyProperty="id" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            replace into <include refid="tableSql"/> (<include refid="batchDouFieldWithoutNullSql"/>) values (<include refid="batchDouValueWithoutNullSql"/>)
+        </foreach>
+    </insert>
+
+        <!-- 清空表 操作危险 慎用，暂时注销掉-->
+    <delete id="truncateModel">
+        -- truncate table <include refid="tableSql"/>
+    </delete>
+
+    <!-- 根据主键删除一个实体 magicalCoderPrimaryKeyName 框架封装-->
+    <delete id="deleteModelByPk" parameterType="hashmap">
+        delete from <include refid="tableSql"/> <include refid="magicalcoderPkWhereSql"/>
+    </delete>
+
+    <delete id="deleteModelList" parameterType="hashmap">
+        delete from <include refid="tableSql"/> where 1=1 <include refid="whereSqlModel"/>
+    </delete>
+
+    <!-- 批量删除实体 in 根据主键-->
+    <delete id="deleteModelByIds" parameterType="java.util.Set">
+        delete from <include refid="tableSql"/> where `id` in <foreach item="id" index="index" collection="collection" open="(" separator="," close=")">#{id}</foreach>
+    </delete>
+    <!-- 更新一个实体 -->
+    <update id="updateModel" parameterType="LiuyaUser">
+        update <include refid="tableSql"/> <include refid="updateSetSql"/> <include refid="updatePkWhereSql"/>
+    </update>
+    <!-- 更新一个实体 仅仅当被更新的字段不为空的时候才更新，否则忽略更新-->
+    <update id="updateModelWithoutNull" parameterType="LiuyaUser">
+        update <include refid="tableSql"/> <include refid="updateSetWithoutNullSql"/> <include refid="updatePkWhereSql"/>
+    </update>
+     <!-- 批量更新实体 传入一组实体，分别根据主键作为查询条件-->
+    <update id="batchUpdateModel" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update <include refid="tableSql"/> <include refid="batchUpdateSetSql"/> <include refid="batchUpdatePkWhereSql"/>
+        </foreach>
+    </update>
+    <update id="batchUpdateModelWithoutNull" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update <include refid="tableSql"/> <include refid="batchUpdateWithoutNullSetSql"/> <include refid="batchUpdatePkWhereSql"/>
+        </foreach>
+    </update>
+    <!-- sql 片段 -->
+   <sql id="selectSqlIgnoreModel">
+        <trim suffixOverrides=",">
+            <if test="idIgnore_ == null or !idIgnore_">`id`,</if>
+            <if test="nameIgnore_ == null or !nameIgnore_">`name`,</if>
+            <if test="emailIgnore_ == null or !emailIgnore_">`email`,</if>
+            <if test="signatureIgnore_ == null or !signatureIgnore_">`signature`,</if>
+            <if test="headportraitIgnore_ == null or !headportraitIgnore_">`headportrait`,</if>
+            <if test="passwordIgnore_ == null or !passwordIgnore_">`password`,</if>
+            <if test="createtimeIgnore_ == null or !createtimeIgnore_">`createtime`,</if>
+            <if test="genderIgnore_ == null or !genderIgnore_">`gender`,</if>
+            <if test="ageIgnore_ == null or !ageIgnore_">`age`,</if>
+            <if test="fansIgnore_ == null or !fansIgnore_">`fans`,</if>
+            <if test="iqIgnore_ == null or !iqIgnore_">`iq`,</if>
+            <if test="replyNumberIgnore_ == null or !replyNumberIgnore_">`reply_number`,</if>
+            <if test="addressIgnore_ == null or !addressIgnore_">`address`,</if>
+            <if test="classNameIgnore_ == null or !classNameIgnore_">`class_name`,</if>
+            <if test="companyIgnore_ == null or !companyIgnore_">`company`,</if>
+            <if test="statusIgnore_ == null or !statusIgnore_">`status`,</if>
+            <if test="nicknameIgnore_ == null or !nicknameIgnore_">`nickname`,</if>
+            <if test="phoneIgnore_ == null or !phoneIgnore_">`phone`,</if>
+            <if test="integralIgnore_ == null or !integralIgnore_">`integral`,</if>
+            <if test="wantCityIgnore_ == null or !wantCityIgnore_">`want_city`,</if>
+            <if test="jobIgnore_ == null or !jobIgnore_">`job`,</if>
+            <if test="roleIdIgnore_ == null or !roleIdIgnore_">`role_id`,</if>
+            <if test="lastLoginIgnore_ == null or !lastLoginIgnore_">`last_login`,</if>
+            <if test="schoolIdIgnore_ == null or !schoolIdIgnore_">`school_id`,</if>
+            <if test="followIgnore_ == null or !followIgnore_">`follow`</if>
+        </trim>
+    </sql>
+    <sql id="selectSqlNotIgnoreModel">
+        <trim suffixOverrides=",">
+         <if test="idNotIgnore_ != null and idNotIgnore_">`id`,</if>
+         <if test="nameNotIgnore_ != null and nameNotIgnore_">`name`,</if>
+         <if test="emailNotIgnore_ != null and emailNotIgnore_">`email`,</if>
+         <if test="signatureNotIgnore_ != null and signatureNotIgnore_">`signature`,</if>
+         <if test="headportraitNotIgnore_ != null and headportraitNotIgnore_">`headportrait`,</if>
+         <if test="passwordNotIgnore_ != null and passwordNotIgnore_">`password`,</if>
+         <if test="createtimeNotIgnore_ != null and createtimeNotIgnore_">`createtime`,</if>
+         <if test="genderNotIgnore_ != null and genderNotIgnore_">`gender`,</if>
+         <if test="ageNotIgnore_ != null and ageNotIgnore_">`age`,</if>
+         <if test="fansNotIgnore_ != null and fansNotIgnore_">`fans`,</if>
+         <if test="iqNotIgnore_ != null and iqNotIgnore_">`iq`,</if>
+         <if test="replyNumberNotIgnore_ != null and replyNumberNotIgnore_">`reply_number`,</if>
+         <if test="addressNotIgnore_ != null and addressNotIgnore_">`address`,</if>
+         <if test="classNameNotIgnore_ != null and classNameNotIgnore_">`class_name`,</if>
+         <if test="companyNotIgnore_ != null and companyNotIgnore_">`company`,</if>
+         <if test="statusNotIgnore_ != null and statusNotIgnore_">`status`,</if>
+         <if test="nicknameNotIgnore_ != null and nicknameNotIgnore_">`nickname`,</if>
+         <if test="phoneNotIgnore_ != null and phoneNotIgnore_">`phone`,</if>
+         <if test="integralNotIgnore_ != null and integralNotIgnore_">`integral`,</if>
+         <if test="wantCityNotIgnore_ != null and wantCityNotIgnore_">`want_city`,</if>
+         <if test="jobNotIgnore_ != null and jobNotIgnore_">`job`,</if>
+         <if test="roleIdNotIgnore_ != null and roleIdNotIgnore_">`role_id`,</if>
+         <if test="lastLoginNotIgnore_ != null and lastLoginNotIgnore_">`last_login`,</if>
+         <if test="schoolIdNotIgnore_ != null and schoolIdNotIgnore_">`school_id`,</if>
+         <if test="followNotIgnore_ != null and followNotIgnore_">`follow`</if>
+        </trim>
+    </sql>
+
+    <sql id="douFieldSql">
+        <trim suffixOverrides=",">
+            <if test="id!=null">`id`,</if> `name`,`email`,`signature`,`headportrait`,`password`,`createtime`,`gender`,`age`,`fans`,`iq`,`reply_number`,`address`,`class_name`,`company`,`status`,`nickname`,`phone`,`integral`,`want_city`,`job`,`role_id`,`last_login`,`school_id`,`follow`,
+        </trim>
+    </sql>
+    <sql id="douValueSql">
+        <trim suffixOverrides=",">
+                <choose><when test="id!=null">#{id},</when></choose>
+                <choose><when test="name!=null">#{name},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="email!=null">#{email},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="signature!=null">#{signature},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="headportrait!=null">#{headportrait},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="password!=null">#{password},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="createtime!=null">#{createtime,jdbcType=TIMESTAMP},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="gender!=null">#{gender},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="age!=null">#{age},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="fans!=null">#{fans},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="iq!=null">#{iq},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="replyNumber!=null">#{replyNumber},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="address!=null">#{address},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="className!=null">#{className},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="company!=null">#{company},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="status!=null">#{status},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="nickname!=null">#{nickname},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="phone!=null">#{phone},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="integral!=null">#{integral},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="wantCity!=null">#{wantCity},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="job!=null">#{job},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="roleId!=null">#{roleId},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="lastLogin!=null">#{lastLogin,jdbcType=TIMESTAMP},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="schoolId!=null">#{schoolId},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="follow!=null">#{follow},</when><otherwise>NULL,</otherwise></choose>
+        </trim>
+    </sql>
+
+    <sql id="douFieldWithoutNullSql">
+        <trim suffixOverrides=",">
+                <if test="id!=null">`id`,</if>
+                <if test="name!=null">`name`,</if>
+                <if test="email!=null">`email`,</if>
+                <if test="signature!=null">`signature`,</if>
+                <if test="headportrait!=null">`headportrait`,</if>
+                <if test="password!=null">`password`,</if>
+                <if test="createtime!=null">`createtime`,</if>
+                <if test="gender!=null">`gender`,</if>
+                <if test="age!=null">`age`,</if>
+                <if test="fans!=null">`fans`,</if>
+                <if test="iq!=null">`iq`,</if>
+                <if test="replyNumber!=null">`reply_number`,</if>
+                <if test="address!=null">`address`,</if>
+                <if test="className!=null">`class_name`,</if>
+                <if test="company!=null">`company`,</if>
+                <if test="status!=null">`status`,</if>
+                <if test="nickname!=null">`nickname`,</if>
+                <if test="phone!=null">`phone`,</if>
+                <if test="integral!=null">`integral`,</if>
+                <if test="wantCity!=null">`want_city`,</if>
+                <if test="job!=null">`job`,</if>
+                <if test="roleId!=null">`role_id`,</if>
+                <if test="lastLogin!=null">`last_login`,</if>
+                <if test="schoolId!=null">`school_id`,</if>
+                <if test="follow!=null">`follow`,</if>
+
+        </trim>
+    </sql>
+    <sql id="douValueWithoutNullSql">
+        <trim suffixOverrides=",">
+                <choose><when test="id!=null">#{id},</when></choose>
+                <choose><when test="name!=null">#{name},</when></choose>
+                <choose><when test="email!=null">#{email},</when></choose>
+                <choose><when test="signature!=null">#{signature},</when></choose>
+                <choose><when test="headportrait!=null">#{headportrait},</when></choose>
+                <choose><when test="password!=null">#{password},</when></choose>
+                <choose><when test="createtime!=null">#{createtime,jdbcType=TIMESTAMP},</when></choose>
+                <choose><when test="gender!=null">#{gender},</when></choose>
+                <choose><when test="age!=null">#{age},</when></choose>
+                <choose><when test="fans!=null">#{fans},</when></choose>
+                <choose><when test="iq!=null">#{iq},</when></choose>
+                <choose><when test="replyNumber!=null">#{replyNumber},</when></choose>
+                <choose><when test="address!=null">#{address},</when></choose>
+                <choose><when test="className!=null">#{className},</when></choose>
+                <choose><when test="company!=null">#{company},</when></choose>
+                <choose><when test="status!=null">#{status},</when></choose>
+                <choose><when test="nickname!=null">#{nickname},</when></choose>
+                <choose><when test="phone!=null">#{phone},</when></choose>
+                <choose><when test="integral!=null">#{integral},</when></choose>
+                <choose><when test="wantCity!=null">#{wantCity},</when></choose>
+                <choose><when test="job!=null">#{job},</when></choose>
+                <choose><when test="roleId!=null">#{roleId},</when></choose>
+                <choose><when test="lastLogin!=null">#{lastLogin,jdbcType=TIMESTAMP},</when></choose>
+                <choose><when test="schoolId!=null">#{schoolId},</when></choose>
+                <choose><when test="follow!=null">#{follow},</when></choose>
+        </trim>
+    </sql>
+
+    <sql id="batchDouFieldSql">
+        <trim suffixOverrides=",">
+                <if test="item.id!=null">`id`,</if> `name`,`email`,`signature`,`headportrait`,`password`,`createtime`,`gender`,`age`,`fans`,`iq`,`reply_number`,`address`,`class_name`,`company`,`status`,`nickname`,`phone`,`integral`,`want_city`,`job`,`role_id`,`last_login`,`school_id`,`follow`,
+        </trim>
+    </sql>
+    <sql id="batchDouValueSql">
+        <trim suffixOverrides=",">
+                <choose><when test="item.id!=null">#{item.id},</when></choose>
+                <choose><when test="item.name!=null">#{item.name},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.email!=null">#{item.email},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.signature!=null">#{item.signature},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.headportrait!=null">#{item.headportrait},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.password!=null">#{item.password},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.createtime!=null">#{item.createtime,jdbcType=TIMESTAMP},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.gender!=null">#{item.gender},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.age!=null">#{item.age},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.fans!=null">#{item.fans},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.iq!=null">#{item.iq},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.replyNumber!=null">#{item.replyNumber},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.address!=null">#{item.address},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.className!=null">#{item.className},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.company!=null">#{item.company},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.status!=null">#{item.status},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.nickname!=null">#{item.nickname},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.phone!=null">#{item.phone},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.integral!=null">#{item.integral},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.wantCity!=null">#{item.wantCity},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.job!=null">#{item.job},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.roleId!=null">#{item.roleId},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.lastLogin!=null">#{item.lastLogin,jdbcType=TIMESTAMP},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.schoolId!=null">#{item.schoolId},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.follow!=null">#{item.follow},</when><otherwise>NULL,</otherwise></choose>
+        </trim>
+    </sql>
+    <sql id="batchDouFieldWithoutNullSql">
+        <trim suffixOverrides=",">
+                <if test="item.id!=null">`id`,</if>
+                <if test="item.name!=null">`name`,</if>
+                <if test="item.email!=null">`email`,</if>
+                <if test="item.signature!=null">`signature`,</if>
+                <if test="item.headportrait!=null">`headportrait`,</if>
+                <if test="item.password!=null">`password`,</if>
+                <if test="item.createtime!=null">`createtime`,</if>
+                <if test="item.gender!=null">`gender`,</if>
+                <if test="item.age!=null">`age`,</if>
+                <if test="item.fans!=null">`fans`,</if>
+                <if test="item.iq!=null">`iq`,</if>
+                <if test="item.replyNumber!=null">`reply_number`,</if>
+                <if test="item.address!=null">`address`,</if>
+                <if test="item.className!=null">`class_name`,</if>
+                <if test="item.company!=null">`company`,</if>
+                <if test="item.status!=null">`status`,</if>
+                <if test="item.nickname!=null">`nickname`,</if>
+                <if test="item.phone!=null">`phone`,</if>
+                <if test="item.integral!=null">`integral`,</if>
+                <if test="item.wantCity!=null">`want_city`,</if>
+                <if test="item.job!=null">`job`,</if>
+                <if test="item.roleId!=null">`role_id`,</if>
+                <if test="item.lastLogin!=null">`last_login`,</if>
+                <if test="item.schoolId!=null">`school_id`,</if>
+                <if test="item.follow!=null">`follow`,</if>
+
+        </trim>
+    </sql>
+    <sql id="batchDouValueWithoutNullSql">
+        <trim suffixOverrides=",">
+                <choose><when test="item.id!=null">#{item.id},</when></choose>
+                <choose><when test="item.name!=null">#{item.name},</when></choose>
+                <choose><when test="item.email!=null">#{item.email},</when></choose>
+                <choose><when test="item.signature!=null">#{item.signature},</when></choose>
+                <choose><when test="item.headportrait!=null">#{item.headportrait},</when></choose>
+                <choose><when test="item.password!=null">#{item.password},</when></choose>
+                <choose><when test="item.createtime!=null">#{item.createtime,jdbcType=TIMESTAMP},</when></choose>
+                <choose><when test="item.gender!=null">#{item.gender},</when></choose>
+                <choose><when test="item.age!=null">#{item.age},</when></choose>
+                <choose><when test="item.fans!=null">#{item.fans},</when></choose>
+                <choose><when test="item.iq!=null">#{item.iq},</when></choose>
+                <choose><when test="item.replyNumber!=null">#{item.replyNumber},</when></choose>
+                <choose><when test="item.address!=null">#{item.address},</when></choose>
+                <choose><when test="item.className!=null">#{item.className},</when></choose>
+                <choose><when test="item.company!=null">#{item.company},</when></choose>
+                <choose><when test="item.status!=null">#{item.status},</when></choose>
+                <choose><when test="item.nickname!=null">#{item.nickname},</when></choose>
+                <choose><when test="item.phone!=null">#{item.phone},</when></choose>
+                <choose><when test="item.integral!=null">#{item.integral},</when></choose>
+                <choose><when test="item.wantCity!=null">#{item.wantCity},</when></choose>
+                <choose><when test="item.job!=null">#{item.job},</when></choose>
+                <choose><when test="item.roleId!=null">#{item.roleId},</when></choose>
+                <choose><when test="item.lastLogin!=null">#{item.lastLogin,jdbcType=TIMESTAMP},</when></choose>
+                <choose><when test="item.schoolId!=null">#{item.schoolId},</when></choose>
+                <choose><when test="item.follow!=null">#{item.follow},</when></choose>
+        </trim>
+    </sql>
+    <sql id="updateSetSql">
+        <set>
+                    <choose> <when test="name!=null">`name`=#{name}</when> <otherwise> `name`=NULL</otherwise> </choose>,
+                    <choose> <when test="email!=null">`email`=#{email}</when> <otherwise> `email`=NULL</otherwise> </choose>,
+                    <choose> <when test="signature!=null">`signature`=#{signature}</when> <otherwise> `signature`=NULL</otherwise> </choose>,
+                    <choose> <when test="headportrait!=null">`headportrait`=#{headportrait}</when> <otherwise> `headportrait`=NULL</otherwise> </choose>,
+                    <choose> <when test="password!=null">`password`=#{password}</when> <otherwise> `password`=NULL</otherwise> </choose>,
+                    <choose> <when test="createtime!=null">`createtime`=#{createtime,jdbcType=TIMESTAMP}</when> <otherwise> `createtime`=NULL</otherwise> </choose>,
+                    <choose> <when test="gender!=null">`gender`=#{gender}</when> <otherwise> `gender`=NULL</otherwise> </choose>,
+                    <choose> <when test="age!=null">`age`=#{age}</when> <otherwise> `age`=NULL</otherwise> </choose>,
+                    <choose> <when test="fans!=null">`fans`=#{fans}</when> <otherwise> `fans`=NULL</otherwise> </choose>,
+                    <choose> <when test="iq!=null">`iq`=#{iq}</when> <otherwise> `iq`=NULL</otherwise> </choose>,
+                    <choose> <when test="replyNumber!=null">`reply_number`=#{replyNumber}</when> <otherwise> `reply_number`=NULL</otherwise> </choose>,
+                    <choose> <when test="address!=null">`address`=#{address}</when> <otherwise> `address`=NULL</otherwise> </choose>,
+                    <choose> <when test="className!=null">`class_name`=#{className}</when> <otherwise> `class_name`=NULL</otherwise> </choose>,
+                    <choose> <when test="company!=null">`company`=#{company}</when> <otherwise> `company`=NULL</otherwise> </choose>,
+                    <choose> <when test="status!=null">`status`=#{status}</when> <otherwise> `status`=NULL</otherwise> </choose>,
+                    <choose> <when test="nickname!=null">`nickname`=#{nickname}</when> <otherwise> `nickname`=NULL</otherwise> </choose>,
+                    <choose> <when test="phone!=null">`phone`=#{phone}</when> <otherwise> `phone`=NULL</otherwise> </choose>,
+                    <choose> <when test="integral!=null">`integral`=#{integral}</when> <otherwise> `integral`=NULL</otherwise> </choose>,
+                    <choose> <when test="wantCity!=null">`want_city`=#{wantCity}</when> <otherwise> `want_city`=NULL</otherwise> </choose>,
+                    <choose> <when test="job!=null">`job`=#{job}</when> <otherwise> `job`=NULL</otherwise> </choose>,
+                    <choose> <when test="roleId!=null">`role_id`=#{roleId}</when> <otherwise> `role_id`=NULL</otherwise> </choose>,
+                    <choose> <when test="lastLogin!=null">`last_login`=#{lastLogin,jdbcType=TIMESTAMP}</when> <otherwise> `last_login`=NULL</otherwise> </choose>,
+                    <choose> <when test="schoolId!=null">`school_id`=#{schoolId}</when> <otherwise> `school_id`=NULL</otherwise> </choose>,
+                    <choose> <when test="follow!=null">`follow`=#{follow}</when> <otherwise> `follow`=NULL</otherwise> </choose>,
+        </set>
+    </sql>
+    <sql id="updateSetWithoutNullSql">
+        <set>
+                    <choose><when test="name!=null">`name`=#{name},</when></choose>
+                    <choose><when test="email!=null">`email`=#{email},</when></choose>
+                    <choose><when test="signature!=null">`signature`=#{signature},</when></choose>
+                    <choose><when test="headportrait!=null">`headportrait`=#{headportrait},</when></choose>
+                    <choose><when test="password!=null">`password`=#{password},</when></choose>
+                    <choose><when test="createtime!=null">`createtime`=#{createtime,jdbcType=TIMESTAMP},</when></choose>
+                    <choose><when test="gender!=null">`gender`=#{gender},</when></choose>
+                    <choose><when test="age!=null">`age`=#{age},</when></choose>
+                    <choose><when test="fans!=null">`fans`=#{fans},</when></choose>
+                    <choose><when test="iq!=null">`iq`=#{iq},</when></choose>
+                    <choose><when test="replyNumber!=null">`reply_number`=#{replyNumber},</when></choose>
+                    <choose><when test="address!=null">`address`=#{address},</when></choose>
+                    <choose><when test="className!=null">`class_name`=#{className},</when></choose>
+                    <choose><when test="company!=null">`company`=#{company},</when></choose>
+                    <choose><when test="status!=null">`status`=#{status},</when></choose>
+                    <choose><when test="nickname!=null">`nickname`=#{nickname},</when></choose>
+                    <choose><when test="phone!=null">`phone`=#{phone},</when></choose>
+                    <choose><when test="integral!=null">`integral`=#{integral},</when></choose>
+                    <choose><when test="wantCity!=null">`want_city`=#{wantCity},</when></choose>
+                    <choose><when test="job!=null">`job`=#{job},</when></choose>
+                    <choose><when test="roleId!=null">`role_id`=#{roleId},</when></choose>
+                    <choose><when test="lastLogin!=null">`last_login`=#{lastLogin,jdbcType=TIMESTAMP},</when></choose>
+                    <choose><when test="schoolId!=null">`school_id`=#{schoolId},</when></choose>
+                    <choose><when test="follow!=null">`follow`=#{follow},</when></choose>
+        </set>
+    </sql>
+    <sql id="magicalcoderPkWhereSql">
+        where 1=1
+            and `id` = #{magicalCoderPrimaryKeyName}
+    </sql>
+    <sql id="updatePkWhereSql">
+        where 1=1
+            and `id` = #{id}
+    </sql>
+    <sql id="batchUpdateSetSql">
+        <set>
+                    <choose> <when test="item.name!=null">`name`=#{item.name}</when> <otherwise> `name`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.email!=null">`email`=#{item.email}</when> <otherwise> `email`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.signature!=null">`signature`=#{item.signature}</when> <otherwise> `signature`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.headportrait!=null">`headportrait`=#{item.headportrait}</when> <otherwise> `headportrait`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.password!=null">`password`=#{item.password}</when> <otherwise> `password`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.createtime!=null">`createtime`=#{item.createtime,jdbcType=TIMESTAMP}</when> <otherwise> `createtime`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.gender!=null">`gender`=#{item.gender}</when> <otherwise> `gender`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.age!=null">`age`=#{item.age}</when> <otherwise> `age`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.fans!=null">`fans`=#{item.fans}</when> <otherwise> `fans`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.iq!=null">`iq`=#{item.iq}</when> <otherwise> `iq`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.replyNumber!=null">`reply_number`=#{item.replyNumber}</when> <otherwise> `reply_number`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.address!=null">`address`=#{item.address}</when> <otherwise> `address`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.className!=null">`class_name`=#{item.className}</when> <otherwise> `class_name`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.company!=null">`company`=#{item.company}</when> <otherwise> `company`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.status!=null">`status`=#{item.status}</when> <otherwise> `status`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.nickname!=null">`nickname`=#{item.nickname}</when> <otherwise> `nickname`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.phone!=null">`phone`=#{item.phone}</when> <otherwise> `phone`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.integral!=null">`integral`=#{item.integral}</when> <otherwise> `integral`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.wantCity!=null">`want_city`=#{item.wantCity}</when> <otherwise> `want_city`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.job!=null">`job`=#{item.job}</when> <otherwise> `job`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.roleId!=null">`role_id`=#{item.roleId}</when> <otherwise> `role_id`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.lastLogin!=null">`last_login`=#{item.lastLogin,jdbcType=TIMESTAMP}</when> <otherwise> `last_login`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.schoolId!=null">`school_id`=#{item.schoolId}</when> <otherwise> `school_id`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.follow!=null">`follow`=#{item.follow}</when> <otherwise> `follow`=NULL</otherwise> </choose>,
+        </set>
+    </sql>
+    <sql id="batchUpdateWithoutNullSetSql">
+        <set>
+                    <choose> <when test="item.name!=null">`name`=#{item.name},</when></choose>
+                    <choose> <when test="item.email!=null">`email`=#{item.email},</when></choose>
+                    <choose> <when test="item.signature!=null">`signature`=#{item.signature},</when></choose>
+                    <choose> <when test="item.headportrait!=null">`headportrait`=#{item.headportrait},</when></choose>
+                    <choose> <when test="item.password!=null">`password`=#{item.password},</when></choose>
+                    <choose> <when test="item.createtime!=null">`createtime`=#{item.createtime,jdbcType=TIMESTAMP},</when></choose>
+                    <choose> <when test="item.gender!=null">`gender`=#{item.gender},</when></choose>
+                    <choose> <when test="item.age!=null">`age`=#{item.age},</when></choose>
+                    <choose> <when test="item.fans!=null">`fans`=#{item.fans},</when></choose>
+                    <choose> <when test="item.iq!=null">`iq`=#{item.iq},</when></choose>
+                    <choose> <when test="item.replyNumber!=null">`reply_number`=#{item.replyNumber},</when></choose>
+                    <choose> <when test="item.address!=null">`address`=#{item.address},</when></choose>
+                    <choose> <when test="item.className!=null">`class_name`=#{item.className},</when></choose>
+                    <choose> <when test="item.company!=null">`company`=#{item.company},</when></choose>
+                    <choose> <when test="item.status!=null">`status`=#{item.status},</when></choose>
+                    <choose> <when test="item.nickname!=null">`nickname`=#{item.nickname},</when></choose>
+                    <choose> <when test="item.phone!=null">`phone`=#{item.phone},</when></choose>
+                    <choose> <when test="item.integral!=null">`integral`=#{item.integral},</when></choose>
+                    <choose> <when test="item.wantCity!=null">`want_city`=#{item.wantCity},</when></choose>
+                    <choose> <when test="item.job!=null">`job`=#{item.job},</when></choose>
+                    <choose> <when test="item.roleId!=null">`role_id`=#{item.roleId},</when></choose>
+                    <choose> <when test="item.lastLogin!=null">`last_login`=#{item.lastLogin,jdbcType=TIMESTAMP},</when></choose>
+                    <choose> <when test="item.schoolId!=null">`school_id`=#{item.schoolId},</when></choose>
+                    <choose> <when test="item.follow!=null">`follow`=#{item.follow},</when></choose>
+        </set>
+    </sql>
+    <sql id="batchUpdatePkWhereSql">
+        where 1=1
+            and `id` = #{item.id}
+    </sql>
+    <!-- 这里可以加上数据库名称 方便的切换数据库-->
+    <sql id="tableSql">
+        blogs.liuya_user
+    </sql>
+
+   <sql id="whereSqlModel">
+        <if test="id!=null "> and `id` = #{id}</if>
+        <if test="name!=null "> and `name` = #{name}</if>
+        <if test="email!=null "> and `email` = #{email}</if>
+        <if test="signature!=null "> and `signature` = #{signature}</if>
+        <if test="headportrait!=null "> and `headportrait` = #{headportrait}</if>
+        <if test="password!=null "> and `password` = #{password}</if>
+        <if test="createtime!=null "> and `createtime` = #{createtime,jdbcType=TIMESTAMP}</if>
+        <if test="gender!=null "> and `gender` = #{gender}</if>
+        <if test="age!=null "> and `age` = #{age}</if>
+        <if test="fans!=null "> and `fans` = #{fans}</if>
+        <if test="iq!=null "> and `iq` = #{iq}</if>
+        <if test="replyNumber!=null "> and `reply_number` = #{replyNumber}</if>
+        <if test="address!=null "> and `address` = #{address}</if>
+        <if test="className!=null "> and `class_name` = #{className}</if>
+        <if test="company!=null "> and `company` = #{company}</if>
+        <if test="status!=null "> and `status` = #{status}</if>
+        <if test="nickname!=null "> and `nickname` = #{nickname}</if>
+        <if test="phone!=null "> and `phone` = #{phone}</if>
+        <if test="integral!=null "> and `integral` = #{integral}</if>
+        <if test="wantCity!=null "> and `want_city` = #{wantCity}</if>
+        <if test="job!=null "> and `job` = #{job}</if>
+        <if test="roleId!=null "> and `role_id` = #{roleId}</if>
+        <if test="lastLogin!=null "> and `last_login` = #{lastLogin,jdbcType=TIMESTAMP}</if>
+        <if test="schoolId!=null "> and `school_id` = #{schoolId}</if>
+        <if test="follow!=null "> and `follow` = #{follow}</if>
+                <if test="nameFirst!=null "> and `name` <![CDATA[=]]>
+                            #{nameFirst}
+                </if>
+                <if test="signatureFirst!=null "> and `signature` <![CDATA[=]]>
+                            #{signatureFirst}
+                </if>
+                <if test="ageFirst!=null "> and `age` <![CDATA[=]]>
+                            #{ageFirst}
+                </if>
+                <if test="addressFirst!=null "> and `address` <![CDATA[=]]>
+                            #{addressFirst}
+                </if>
+                <if test="nicknameFirst!=null "> and `nickname` <![CDATA[=]]>
+                            #{nicknameFirst}
+                </if>
+                <if test="phoneFirst!=null "> and `phone` <![CDATA[=]]>
+                            #{phoneFirst}
+                </if>
+        <!--<if test="whereSql!=null"> ${whereSql}</if>-->
+    </sql>
+
+    <sql id="safeGroupBy">
+        <if test="safeGroupBy!=null and safeGroupBy!=''">
+            group by
+            <choose>
+                <when test="safeGroupBy != null and safeGroupBy == 'id'">  `id` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'name'">  `name` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'email'">  `email` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'signature'">  `signature` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'headportrait'">  `headportrait` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'password'">  `password` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'createtime'">  `createtime` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'gender'">  `gender` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'age'">  `age` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'fans'">  `fans` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'iq'">  `iq` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'reply_number'">  `reply_number` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'address'">  `address` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'class_name'">  `class_name` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'company'">  `company` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'status'">  `status` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'nickname'">  `nickname` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'phone'">  `phone` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'integral'">  `integral` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'want_city'">  `want_city` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'job'">  `job` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'role_id'">  `role_id` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'last_login'">  `last_login` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'school_id'">  `school_id` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'follow'">  `follow` </when>
+            </choose>
+        </if>
+    </sql>
+    <sql id="safeOrderBy">
+        <if test="safeOrderBy!=null and safeOrderBy!=''">
+            <choose>
+                <when test="safeOrderBy != null and safeOrderBy == 'id desc'"> order by  `id` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'id asc'"> order by `id` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'name desc'"> order by  `name` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'name asc'"> order by `name` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'email desc'"> order by  `email` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'email asc'"> order by `email` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'signature desc'"> order by  `signature` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'signature asc'"> order by `signature` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'headportrait desc'"> order by  `headportrait` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'headportrait asc'"> order by `headportrait` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'password desc'"> order by  `password` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'password asc'"> order by `password` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'createtime desc'"> order by  `createtime` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'createtime asc'"> order by `createtime` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'gender desc'"> order by  `gender` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'gender asc'"> order by `gender` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'age desc'"> order by  `age` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'age asc'"> order by `age` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'fans desc'"> order by  `fans` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'fans asc'"> order by `fans` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'iq desc'"> order by  `iq` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'iq asc'"> order by `iq` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'reply_number desc'"> order by  `reply_number` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'reply_number asc'"> order by `reply_number` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'address desc'"> order by  `address` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'address asc'"> order by `address` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'class_name desc'"> order by  `class_name` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'class_name asc'"> order by `class_name` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'company desc'"> order by  `company` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'company asc'"> order by `company` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'status desc'"> order by  `status` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'status asc'"> order by `status` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'nickname desc'"> order by  `nickname` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'nickname asc'"> order by `nickname` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'phone desc'"> order by  `phone` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'phone asc'"> order by `phone` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'integral desc'"> order by  `integral` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'integral asc'"> order by `integral` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'want_city desc'"> order by  `want_city` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'want_city asc'"> order by `want_city` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'job desc'"> order by  `job` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'job asc'"> order by `job` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'role_id desc'"> order by  `role_id` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'role_id asc'"> order by `role_id` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'last_login desc'"> order by  `last_login` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'last_login asc'"> order by `last_login` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'school_id desc'"> order by  `school_id` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'school_id asc'"> order by `school_id` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'follow desc'"> order by  `follow` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'follow asc'"> order by `follow` asc </when>
+            </choose>
+        </if>
+    </sql>
+
+    <sql id="orderGroupLimit">
+        <include refid="safeGroupBy"/>
+        <if test="notSafeGroupBy != null and notSafeGroupBy != ''"> group by ${notSafeGroupBy}</if>
+        <include refid="safeOrderBy"/>
+        <if test="notSafeOrderBy != null and notSafeOrderBy != ''"> order by ${notSafeOrderBy}</if>
+        <if test="limit != null"> LIMIT <if test="start != null">#{start},</if>#{limit} </if>
+    </sql>
+
+</mapper>

@@ -1,0 +1,67 @@
+
+<!--
+代码为自动生成 Created by www.magicalcoder.com
+ 如果你改变了此类 read 请将此行删除
+ 欢迎加入官方QQ群:323237052
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:include="magicalcoder/v001/include/head :: commonHead('liuya_company编辑')"/>
+
+<body class="childrenBody layui-hide">
+<form class="layui-form" style="width:80%;">
+
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_id">
+        <label class="layui-form-label">id</label>
+        <div class="layui-input-block">
+            <input type="text" disabled="true" class="layui-input" name="id"  placeholder="主键自动生成，无需手动编辑,如果重置则变成增加数据"/>
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_companyId">
+        <label class="layui-form-label">公司的名字id</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="companyId" placeholder="请输入公司的名字id" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_address">
+        <label class="layui-form-label">详细地址</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="address" placeholder="请输入详细地址" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_cityId">
+        <label class="layui-form-label">城市的id</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="cityId" placeholder="请输入城市的id" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_type">
+        <label class="layui-form-label">公司类型</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="type" placeholder="请输入公司类型" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_number">
+        <label class="layui-form-label">公司的人数</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="number" placeholder="请输入公司的人数" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_link">
+        <label class="layui-form-label">公司的主页</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="link" placeholder="请输入公司的主页" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <div class="layui-input-block">
+            <button class="layui-btn security_edit_form_operate_save" lay-submit="" lay-filter="save">立即提交</button>
+            <button type="reset" class="layui-hide layui-btn layui-btn-primary" >重置</button>
+        </div>
+    </div>
+</form>
+    <div th:replace="magicalcoder/v001/include/main-js :: commonMain" />
+    <script type="text/javascript"  th:src="@{/assets/admin/liuyacompany/liuyacompany-edit.js}"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+这里是我自定义新查询的地方
+-->
+
+<mapper namespace="com.Westworld.blogs.web.webservice.mapper.WebLiuyaArticleMapper">
+
+    <!-- 得到置顶文章 -->
+    <select id="getIndexTops" resultType="map">
+		SELECT a.*,u.name,u.headportrait
+		FROM `liuya_article`a
+		LEFT JOIN liuya_user u
+		ON a.user_id = u.id
+		where a.page_view = 1
+		ORDER BY createtime desc
+		LIMIT 0,3
+	</select>
+
+
+    <!-- 查询所有的题目,按照最新的时间排序 -->
+    <select id="getIndexRecommends" resultType="map">
+
+        <!-- 首页推荐查询，查询全部 -->
+            SELECT a.*,u.*
+            FROM `liuya_article`a
+            LEFT JOIN liuya_user u
+            ON a.user_id = u.id
+            <if test="label_id != null">
+                where a.label_type = #{label_id}
+            </if>
+            ORDER BY a.createtime desc
+            LIMIT 0,20
+    </select>
+
+    <!-- 查询10条最近七天评论最多的文章 ，降序排列-->
+    <select id="getIndexHots" resultType="map">
+			    select * from `liuya_article`
+ 				where date_sub(curdate(),INTERVAL 7 DAY) &lt;= date(`createtime`)
+ 				and comment_number > 0
+ 				ORDER BY comment_number
+ 				desc LIMIT 0,10
+	</select>
+
+    <!-- 得到 此文章 详情 -->
+    <select id="getArticleInfoById" resultType="map">
+			SELECT a.*,u.*
+			FROM `liuya_article`a
+			LEFT JOIN liuya_user u
+			ON a.user_id = u.id
+			where a.id = #{article_id}
+	 </select>
+
+    <!--获得所有的标签-->
+    <select id="getLabel" resultType="map">
+        SELECT * FROM `liuya_label`
+    </select>
+
+
+  <!--根据文章的id,查询所有的评论内容-->
+    <select id="getCommentByArticleID" resultType="map">
+           select c.*,u.name,u.headportrait
+            from liuya_comment c
+            LEFT JOIN liuya_user u
+            on c.user_id = u.id
+            where c.comment_type = #{type_id}
+            and object_id = #{object_id}
+    </select>
+
+    <!--获得一个评论的评论数量-->
+    <select id="getCommentNubmer" resultType="int">
+            select count(*)
+            from liuya_comment c
+            LEFT JOIN liuya_user u
+            on c.user_id = u.id
+            where c.comment_type = #{type_id}
+            and object_id = #{object_id}
+
+    </select>
+
+
+    <!--得到所有的评论-->
+         <select id="getArticleAll" resultType="LiuyaArticle">
+             select * from liuya_article
+        </select>
+
+    <!--给评论赋评论数-->
+
+        <update id="setArticleCommentNumber">
+            update  liuya_article
+            set comment_number = #{commentNumber}
+            WHERE id = #{id}
+        </update>
+
+</mapper>
+

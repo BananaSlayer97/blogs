@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: commonHead('详情')"></head>
+<body>
+
+<div th:replace="common/header :: commonHeader"></div>
+
+<!-- 右方-问题详细信息模板 -->
+<div class="layui-container">
+
+  <div class="layui-row layui-col-space15">
+
+      <!-- 左方 -->
+      <div class="layui-col-md8 content detail">
+
+          <!-- 问题的详细信息 -->
+          <div class="fly-panel detail-box" id="article_info">
+
+          </div>
+
+          <template id="article_info_template" type="text/html">
+              <h1>{{d.article.title}}</h1>
+
+              <div class="fly-detail-info">
+                  <span class="layui-badge layui-bg-green fly-detail-column">
+
+                  </span>
+
+                  <!-- 判断是否是管理员查看-->
+
+                 <!--  <div class="fly-admin-box" data-id="{{d.article.id}}">
+                      <span class="layui-btn layui-btn-xs jie-admin" type="del">删除</span>
+
+                      <span class="layui-btn layui-btn-xs jie-admin" type="set" field="stick" rank="1">置顶</span>
+                      <span class="layui-btn layui-btn-xs jie-admin" type="set" field="stick" rank="0" style="background-color:#ccc;">取消置顶</span>
+
+                      <span class="layui-btn layui-btn-xs jie-admin" type="set" field="status" rank="1">加精</span>
+                      <span class="layui-btn layui-btn-xs jie-admin" type="set" field="status" rank="0" style="background-color:#ccc;">取消加精</span>
+                  </div>-->
+
+
+
+                  <span class="fly-list-nums">
+                    <a href="#comment">
+                        <i class="iconfont" title="回答">&#xe60c;</i>
+                        {{d.article.comment_number}}
+                    </a>
+	             </span>
+
+              </div>
+              <div class="detail-about">
+                  <a class="fly-avatar" href="user/home?uid={{d.article.user_id}}">
+                      <img src="{{d.article.headportrait}}"/>
+                  </a>
+
+                  <div class="fly-detail-user">
+                      <a href="user/home.html?uid={{d.article.user_id}}" class="fly-link">
+                          <cite>{{d.article.name}}</cite>
+                          <i class="layui-badge fly-badge-vip">IQ: {{d.article.iq}}</i>
+                      </a>
+                      <span>{{d.article.createtime}}</span>
+                  </div>
+                  <div class="detail-hits" id="LAY_jieAdmin" data-id="123">
+
+                      <span class="layui-btn layui-btn-xs jie-admin" type="edit"><a href="add.html">编辑此贴</a></span>
+
+                  </div>
+              </div>
+
+                  <div class="detail-body photos">
+                      {{d.article.content}}
+                  </div>
+
+          </template>
+
+
+          <!-- 评论信息 -->
+          <div class="fly-panel detail-box" id="flyReply">
+
+              <fieldset class="layui-elem-field layui-field-title" style="text-align: center;">
+                  <legend>回帖</legend>
+              </fieldset>
+
+
+              <div id="article_comment"> </div>
+              <template id="article_comment_template">
+
+                  <ul class="jieda" id="jieda">
+
+                      {{#  layui.each(d.comment,function(index,item){ }}
+
+                      <li data-id="111" class="jieda-daan">
+\                          <div class="detail-about detail-about-reply">
+                              <a class="fly-avatar" href="user/home?user_id={{item.user_id}}">
+                                  <img src="{{item.headportrait}}" alt=" user/home?user_id={{item.name}}"/>
+                              </a>
+                              <div class="fly-detail-user">
+                                  <a href="user/home?user_id={{item.user_id}}" class="fly-link">
+                                      <cite>{{item.name}}</cite>
+                                  </a>
+                              </div>
+
+                              <div class="detail-hits">
+                                  <span>{{item.createtime}}</span>
+                              </div>
+
+                          </div>
+
+                            <!--评论内容-->
+                          <div class="detail-body jieda-body photos">
+                              {{item.content}}
+                          </div>
+
+
+                          <div class="jieda-reply">
+                              <div class="jieda-admin">
+                                  <span type="edit">编辑</span>
+                                  <span type="del">删除</span>
+                              </div>
+                          </div>
+
+                      </li>
+
+                      {{#  }); }}
+
+                      <!-- 判断评论数量 -->
+                      {{# if(d.comment.length === 0){	}}
+                      <li class="fly-none">我来消灭零回复</li>
+                      {{# } }}
+
+                  </ul>
+
+              </template>
+
+              <!-- 回帖框输入框 -->
+
+              <div class="layui-form layui-form-pane" id="reply">
+
+                  <form action="" class="layui-form" method="post" id="reply_template" >
+
+                      <div class="layui-form-item layui-form-text">
+                          <a name="comment"></a>
+                          <div class="layui-input-block">
+                              <textarea id="L_content" name="content" required="required" lay-verify="required" placeholder="请输入内容"  class="layui-textarea fly-editor" style="height: 150px;"></textarea>
+                          </div>
+                      </div>
+
+                      <div class="layui-form-item">
+                          <!--类型id-->
+                          <input type="hidden" name="commentType" value="1"/>
+
+                          <!--文章的作者-->
+                          <input type="hidden" id="objectUser" name="objectUser" value=""/>
+
+                          <!--文章id-->
+                          <input type="hidden" id="objectId" name="objectId" value=""/>
+
+                          <button class="layui-btn" lay-filter="addComment" lay-submit="">提交回复</button>
+                      </div>
+
+                  </form>
+
+              </div>
+
+          </div>
+
+      </div>
+
+
+      <!-- 右方 -  -->
+      <div class="layui-col-md4">
+
+            <!--本周热议  -->
+            <div  th:replace="common/hots :: commonHots"></div>
+
+	    </div>
+
+  </div>
+
+
+</div>
+
+
+<div th:replace="common/footer :: commonFooter"></div>
+
+<script th:src="@{/static/assets/res/layui/layui.js}"></script>
+
+<script th:src="@{/static/assets/res/js/jie/detail.js}"></script>
+
+
+<script th:replace="common/bottom :: commonBottom"></script>
+
+</body>
+</html>

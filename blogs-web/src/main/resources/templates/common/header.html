@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="commonHeader" class="fly-header layui-bg-black">
+
+     <div class="layui-container">
+
+
+         <a class="fly-logo" href="index">
+             <img style="height: 30px;width: 100px" th:src="@{/static/timg.jpg}" alt="layui"/>
+         </a>
+
+           <ul class="layui-nav fly-nav layui-hide-xs">
+
+		      <li class="layui-nav-item layui-this">
+                  <a href="index">社区交流</a>
+		      </li>
+
+		     <!-- <li class="layui-nav-item">
+		        <a href="case/case">学习中心</a>
+              </li>-->
+
+
+               <!--进行判断，如果有人登陆成功则进行显示-->
+
+		      <li th:if="${user}" class="layui-nav-item">
+
+<!--
+		        <a href="http://localhost:18080/youyaboot-admin" target="_blank">后台管理</a>
+-->
+                  <a href="http://47.100.235.58:18080/youyaboot-admin" target="_blank">后台管理</a>
+
+              </li>
+
+               <li th:if="${user}"  class="layui-nav-item">
+                   <a href="user/index">个人中心</a>
+               </li>
+
+               <li th:if="${user}"  class="layui-nav-item">
+                   <img style="width:50px;height:40px" th:src="${user['headportrait']}" th:alt="${user[name]}"/>
+                   <strong th:text="${user['name']}"></strong>
+               </li>
+
+
+               <!--如果还未登录，进行显示这俩个 -->
+               <li th:if="not ${user}" class="layui-nav-item">
+		        <a href="user/login">登入</a>
+		      </li>
+
+		      <li th:if="not ${user}" class="layui-nav-item">
+		        <a href="user/reg">注册</a>
+		      </li>
+
+
+
+		    </ul>
+    </div>
+</div>
+
+</html>

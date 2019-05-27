@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+这里是我自定义新查询的地方
+-->
+
+<mapper namespace="com.Westworld.blogs.web.webservice.mapper.WebLiuyaUserMapper">
+
+
+    <!-- 查看某人的详细信息 -->
+    <select id="getUserByUserId" resultType="map">
+		select * from liuya_user where id = #{user_id}
+	</select>
+
+
+    <!-- 查询我收收藏的文章 -->
+    <select id="getCollectsByUserId" resultType="map">
+		SELECT c.*,a.title
+        FROM liuya_collect c
+        LEFT JOIN liuya_article a
+        on a.id = c.object_id
+        WHERE c.`user_id` =#{user_id}
+        and c.collect_type = 1
+		ORDER BY c.createtime desc
+		LIMIT 0,20
+	</select>
+
+
+    <!-- 根据id 查询此人发送过的文章 -->
+    <select id="getPublishByUserId" resultType="map">
+		select  a.*,u.name
+		from liuya_article a
+		LEFT JOIN liuya_user u
+		on a.user_id = u.id
+		WHERE u.id=  #{user_id}
+		ORDER BY a.createtime desc
+		LIMIT 0,20
+	 </select>
+
+
+
+    <!-- 根据id 查询此人发送的评论 -->
+    <select id="getCommonsByUserId" resultType="map">
+		SELECT c.*,u.name,a.title
+        FROM liuya_comment c
+        LEFT JOIN liuya_user u
+        on c.user_id = u.id
+        LEFT JOIN liuya_article a
+        on a.id = c.object_id
+        WHERE u.id= #{user_id}
+        ORDER BY c.createtime desc
+        LIMIT 0,20
+	 </select>
+
+
+    <!-- 根据 用户的id, 查询所有的粉丝 -->
+    <select id="getFansByUserId" resultType="map">
+            SELECT f.*,u.*
+            from liuya_follow f
+            LEFT JOIN liuya_user u
+            on f.user_id = u.id
+            WHERE f.follow_id = #{user_id}
+	 </select>
+
+
+    <!-- 根据 用户的id, 查询所有的消息 -->
+    <select id="getMessageByUserId" resultType="map">
+        SELECT u.name,c.*,a.title
+        FROM liuya_comment c
+        LEFT JOIN liuya_user u
+        on u.id = c.user_id
+        LEFT JOIN liuya_article a
+        on c.object_id = a.id
+        WHERE object_user = #{user_id}
+        ORDER BY c.createtime desc
+        LIMIT 0,7
+    </select>
+
+
+
+    <!-- 根据 用户的id, 查询所有的关注人 -->
+    <select id="getFollowByUserId" resultType="map">
+            SELECT f.*,u.*
+            from liuya_follow f
+            LEFT JOIN liuya_user u
+            on f.follow_id = u.id
+            WHERE user_id = #{user_id}
+	 </select>
+
+
+    <!--用户登录方法-->
+    <select id="login" resultType="map">
+
+        SELECT * FROM `liuya_user`
+        where `email` =  #{email}
+        and password = #{password}
+
+	 </select>
+
+
+    <!--验证邮箱是否注册方法-->
+    <select id="checkEmail" resultType="int">
+
+            SELECT count(*) FROM `liuya_user`
+            where `email` =  #{email}
+
+	 </select>
+
+
+
+</mapper>

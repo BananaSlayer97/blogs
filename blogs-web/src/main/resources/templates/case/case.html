@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: commonHead('学习中心')"></head>
+<body>
+
+
+<div th:replace="common/header :: commonHeader"></div>
+
+
+<!-- <div class="fly-case-header">
+    
+  <div class="fly-case-btn">
+    <a href="javascript:;" class="layui-btn layui-btn-big fly-case-active" data-type="push">贡献排行</a>
+    <a href="" class="layui-btn layui-btn-primary layui-btn-big">全部题库</a>
+     </div>
+ </div> -->
+
+<div class="fly-main" style="overflow: hidden;">
+
+	
+  <ul class="fly-case-list">
+  
+    <li data-id="123">
+    
+      <a class="fly-case-img" href="http://fly.layui.com/" target="_blank" >
+        <img src="/res/images/fly.jpg" alt="Fly社区"/>
+        <cite class="layui-btn layui-btn-primary layui-btn-small">去围观</cite>
+      </a>
+      
+      <h2><a href="http://fly.layui.com/" target="_blank">Fly社区</a></h2>
+      
+      <p class="fly-case-desc">Fly 社区是 layui 的官方社区，全站的前端层面基于 Layui 风格编写，轻量而简洁，并且模版已经开源，可用于极简社区模板。</p>
+     
+      <div class="fly-case-info">
+        <a href="user/home" class="fly-case-user" target="_blank"><img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"></a>
+        <p class="layui-elip" style="font-size: 12px;"><span style="color: #666;">贤心</span> 2017-11-30</p>
+        <p>获得<a class="fly-case-nums fly-case-active" href="javascript:;" data-type="showPraise" style=" padding:0 5px; color: #01AAED;">666</a>个赞</p>
+        <button class="layui-btn layui-btn-primary fly-case-active" data-type="praise">点赞</button>
+        <!-- <button class="layui-btn  fly-case-active" data-type="praise">已赞</button> -->
+      </div>
+      
+    </li>
+   
+  </ul>
+  
+  <!-- <blockquote class="layui-elem-quote layui-quote-nm">暂无数据</blockquote> -->
+
+<!--  <div style="text-align: center;">
+    <div class="laypage-main">
+      <span class="laypage-curr">1</span>
+      <a href="">2</a><a href="">3</a>
+      <a href="">4</a>
+      <a href="">5</a>
+      <span>…</span>
+      <a href="" class="laypage-last" title="尾页">尾页</a>
+      <a href="" class="laypage-next">下一页</a>
+    </div>
+  </div>-->
+
+</div>
+
+<div th:replace="common/footer :: commonFooter"></div>
+
+<script th:src="@{/static/assets/res/layui/layui.js}"></script>
+
+<script th:src="@{/static/assets/res/js/case/case.js}"></script>
+
+
+<script th:replace="common/bottom :: commonBottom"></script>
+
+</body>
+</html>

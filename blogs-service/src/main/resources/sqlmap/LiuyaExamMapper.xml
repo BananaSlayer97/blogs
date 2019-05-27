@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+* 代码为自动生成 Created by www.magicalcoder.com
+* 如果你改变了此类 read 请将此行删除
+*  欢迎加入官方QQ群:323237052
+-->
+<mapper namespace="com.Westworld.blogs.service.liuyaexam.mapper.LiuyaExamMapper">
+    <!-- LiuyaExam -->
+
+    <resultMap id="resultMap" type="LiuyaExam">
+                <id column="id" property="id"/>
+                <result column="exam_title" property="examTitle" />
+                <result column="exam_content" property="examContent" />
+                <result column="exam_createtime" property="examCreatetime" />
+                <result column="user_id" property="userId" />
+                <result column="exam_type_id" property="examTypeId" />
+                <result column="exam_page_view" property="examPageView" />
+                <result column="exam_up_number" property="examUpNumber" />
+                <result column="exam_check_status" property="examCheckStatus" />
+                <result column="exam_comment_number" property="examCommentNumber" />
+    </resultMap>
+    <!-- 查询单个实体 -->
+    <select id="getModel" parameterType="hashmap" resultMap="resultMap">
+        select  <choose><when test="NotIgnore_!=null and NotIgnore_"><include refid="selectSqlNotIgnoreModel"/> </when><otherwise><include refid="selectSqlIgnoreModel"/></otherwise></choose>
+        from  <include refid="tableSql"/>  where 1=1 <include refid="whereSqlModel"/> <include refid="orderGroupLimit"/>
+    </select>
+    <!--根据主键 查询单个实体 -->
+    <select id="getModelByPk" parameterType="hashmap" resultMap="resultMap">
+        select  <choose><when test="NotIgnore_!=null and NotIgnore_"><include refid="selectSqlNotIgnoreModel"/> </when><otherwise><include refid="selectSqlIgnoreModel"/></otherwise></choose>
+        from  <include refid="tableSql"/>  <include refid="magicalcoderPkWhereSql"/>
+    </select>
+    <!-- 查询一组实体 -->
+    <select id="getModelList" parameterType="hashmap" resultMap="resultMap">
+        select  <choose><when test="NotIgnore_!=null and NotIgnore_"><include refid="selectSqlNotIgnoreModel"/> </when><otherwise><include refid="selectSqlIgnoreModel"/></otherwise></choose>
+        from  <include refid="tableSql"/>  where 1=1 <include refid="whereSqlModel"/> <include refid="orderGroupLimit"/>
+    </select>
+    <!-- 查询一组实体 in 语句-->
+    <select id="getModelInList" parameterType="hashmap" resultMap="resultMap">
+        select  <choose><when test="NotIgnore_!=null and NotIgnore_"><include refid="selectSqlNotIgnoreModel"/> </when><otherwise><include refid="selectSqlIgnoreModel"/></otherwise></choose>
+        from  <include refid="tableSql"/>  where  `id` in
+        <foreach item="id" index="index" collection="idList" open="(" separator="," close=")">#{id}</foreach>
+        <include refid="orderGroupLimit"/>
+    </select>
+    <!-- 查询一组实体的数量 -->
+    <select id="getModelListCount" parameterType="hashmap" resultType="int">
+        select count(1)  from  <include refid="tableSql"/>  where 1=1 <include refid="whereSqlModel"/> <include refid="orderGroupLimit"/>
+    </select>
+    <!-- 插入单个实体 遇到入参null转换成数据库NULL-->
+    <insert id="insertModel" parameterType="LiuyaExam"  useGeneratedKeys="true" keyProperty="id" >
+        insert into <include refid="tableSql"/> (<include refid="douFieldSql"/>) values(<include refid="douValueSql"/>)
+    </insert>
+    <!-- 替换单个实体 如果没有则插入 遇到入参null转换成数据库NULL-->
+    <insert id="replaceModel" parameterType="LiuyaExam"  useGeneratedKeys="true" keyProperty="id" >
+        replace into <include refid="tableSql"/> (<include refid="douFieldSql"/>) values(<include refid="douValueSql"/>)
+    </insert>
+    <!-- 插入单个实体 遇到入参null转换成数据库默认值-->
+    <insert id="insertModelWithoutNull" parameterType="LiuyaExam"  useGeneratedKeys="true" keyProperty="id" >
+        insert into <include refid="tableSql"/> (<include refid="douFieldWithoutNullSql"/>) values(<include refid="douValueWithoutNullSql"/>)
+    </insert>
+    <!-- 替换单个实体 如果没有则插入 遇到入参null转换成数据库默认值-->
+    <insert id="replaceModelWithoutNull" parameterType="LiuyaExam"  useGeneratedKeys="true" keyProperty="id" >
+        replace into <include refid="tableSql"/> (<include refid="douFieldWithoutNullSql"/>) values(<include refid="douValueWithoutNullSql"/>)
+    </insert>
+    <!-- 批量插入一组实体 -->
+    <insert id="batchInsertModel" parameterType="java.util.List"   useGeneratedKeys="true" keyProperty="id" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            insert into <include refid="tableSql"/> (<include refid="batchDouFieldSql"/>) values (<include refid="batchDouValueSql"/>)
+        </foreach>
+    </insert>
+    <!-- 批量替换一组实体 -->
+    <insert id="batchReplaceModel" parameterType="java.util.List"  useGeneratedKeys="true" keyProperty="id" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            replace into <include refid="tableSql"/> (<include refid="batchDouFieldSql"/>) values (<include refid="batchDouValueSql"/>)
+        </foreach>
+    </insert>
+    <insert id="batchInsertModelWithoutNull" parameterType="java.util.List"   useGeneratedKeys="true" keyProperty="id" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            insert into <include refid="tableSql"/> (<include refid="batchDouFieldWithoutNullSql"/>) values (<include refid="batchDouValueWithoutNullSql"/>)
+        </foreach>
+    </insert>
+    <insert id="batchReplaceModelWithoutNull" parameterType="java.util.List"  useGeneratedKeys="true" keyProperty="id" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            replace into <include refid="tableSql"/> (<include refid="batchDouFieldWithoutNullSql"/>) values (<include refid="batchDouValueWithoutNullSql"/>)
+        </foreach>
+    </insert>
+
+        <!-- 清空表 操作危险 慎用，暂时注销掉-->
+    <delete id="truncateModel">
+        -- truncate table <include refid="tableSql"/>
+    </delete>
+
+    <!-- 根据主键删除一个实体 magicalCoderPrimaryKeyName 框架封装-->
+    <delete id="deleteModelByPk" parameterType="hashmap">
+        delete from <include refid="tableSql"/> <include refid="magicalcoderPkWhereSql"/>
+    </delete>
+
+    <delete id="deleteModelList" parameterType="hashmap">
+        delete from <include refid="tableSql"/> where 1=1 <include refid="whereSqlModel"/>
+    </delete>
+
+    <!-- 批量删除实体 in 根据主键-->
+    <delete id="deleteModelByIds" parameterType="java.util.Set">
+        delete from <include refid="tableSql"/> where `id` in <foreach item="id" index="index" collection="collection" open="(" separator="," close=")">#{id}</foreach>
+    </delete>
+    <!-- 更新一个实体 -->
+    <update id="updateModel" parameterType="LiuyaExam">
+        update <include refid="tableSql"/> <include refid="updateSetSql"/> <include refid="updatePkWhereSql"/>
+    </update>
+    <!-- 更新一个实体 仅仅当被更新的字段不为空的时候才更新，否则忽略更新-->
+    <update id="updateModelWithoutNull" parameterType="LiuyaExam">
+        update <include refid="tableSql"/> <include refid="updateSetWithoutNullSql"/> <include refid="updatePkWhereSql"/>
+    </update>
+     <!-- 批量更新实体 传入一组实体，分别根据主键作为查询条件-->
+    <update id="batchUpdateModel" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update <include refid="tableSql"/> <include refid="batchUpdateSetSql"/> <include refid="batchUpdatePkWhereSql"/>
+        </foreach>
+    </update>
+    <update id="batchUpdateModelWithoutNull" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update <include refid="tableSql"/> <include refid="batchUpdateWithoutNullSetSql"/> <include refid="batchUpdatePkWhereSql"/>
+        </foreach>
+    </update>
+    <!-- sql 片段 -->
+   <sql id="selectSqlIgnoreModel">
+        <trim suffixOverrides=",">
+            <if test="idIgnore_ == null or !idIgnore_">`id`,</if>
+            <if test="examTitleIgnore_ == null or !examTitleIgnore_">`exam_title`,</if>
+            <if test="examContentIgnore_ == null or !examContentIgnore_">`exam_content`,</if>
+            <if test="examCreatetimeIgnore_ == null or !examCreatetimeIgnore_">`exam_createtime`,</if>
+            <if test="userIdIgnore_ == null or !userIdIgnore_">`user_id`,</if>
+            <if test="examTypeIdIgnore_ == null or !examTypeIdIgnore_">`exam_type_id`,</if>
+            <if test="examPageViewIgnore_ == null or !examPageViewIgnore_">`exam_page_view`,</if>
+            <if test="examUpNumberIgnore_ == null or !examUpNumberIgnore_">`exam_up_number`,</if>
+            <if test="examCheckStatusIgnore_ == null or !examCheckStatusIgnore_">`exam_check_status`,</if>
+            <if test="examCommentNumberIgnore_ == null or !examCommentNumberIgnore_">`exam_comment_number`</if>
+        </trim>
+    </sql>
+    <sql id="selectSqlNotIgnoreModel">
+        <trim suffixOverrides=",">
+         <if test="idNotIgnore_ != null and idNotIgnore_">`id`,</if>
+         <if test="examTitleNotIgnore_ != null and examTitleNotIgnore_">`exam_title`,</if>
+         <if test="examContentNotIgnore_ != null and examContentNotIgnore_">`exam_content`,</if>
+         <if test="examCreatetimeNotIgnore_ != null and examCreatetimeNotIgnore_">`exam_createtime`,</if>
+         <if test="userIdNotIgnore_ != null and userIdNotIgnore_">`user_id`,</if>
+         <if test="examTypeIdNotIgnore_ != null and examTypeIdNotIgnore_">`exam_type_id`,</if>
+         <if test="examPageViewNotIgnore_ != null and examPageViewNotIgnore_">`exam_page_view`,</if>
+         <if test="examUpNumberNotIgnore_ != null and examUpNumberNotIgnore_">`exam_up_number`,</if>
+         <if test="examCheckStatusNotIgnore_ != null and examCheckStatusNotIgnore_">`exam_check_status`,</if>
+         <if test="examCommentNumberNotIgnore_ != null and examCommentNumberNotIgnore_">`exam_comment_number`</if>
+        </trim>
+    </sql>
+
+    <sql id="douFieldSql">
+        <trim suffixOverrides=",">
+            <if test="id!=null">`id`,</if> `exam_title`,`exam_content`,`exam_createtime`,`user_id`,`exam_type_id`,`exam_page_view`,`exam_up_number`,`exam_check_status`,`exam_comment_number`,
+        </trim>
+    </sql>
+    <sql id="douValueSql">
+        <trim suffixOverrides=",">
+                <choose><when test="id!=null">#{id},</when></choose>
+                <choose><when test="examTitle!=null">#{examTitle},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="examContent!=null">#{examContent},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="examCreatetime!=null">#{examCreatetime,jdbcType=TIMESTAMP},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="userId!=null">#{userId},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="examTypeId!=null">#{examTypeId},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="examPageView!=null">#{examPageView},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="examUpNumber!=null">#{examUpNumber},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="examCheckStatus!=null">#{examCheckStatus},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="examCommentNumber!=null">#{examCommentNumber},</when><otherwise>NULL,</otherwise></choose>
+        </trim>
+    </sql>
+
+    <sql id="douFieldWithoutNullSql">
+        <trim suffixOverrides=",">
+                <if test="id!=null">`id`,</if>
+                <if test="examTitle!=null">`exam_title`,</if>
+                <if test="examContent!=null">`exam_content`,</if>
+                <if test="examCreatetime!=null">`exam_createtime`,</if>
+                <if test="userId!=null">`user_id`,</if>
+                <if test="examTypeId!=null">`exam_type_id`,</if>
+                <if test="examPageView!=null">`exam_page_view`,</if>
+                <if test="examUpNumber!=null">`exam_up_number`,</if>
+                <if test="examCheckStatus!=null">`exam_check_status`,</if>
+                <if test="examCommentNumber!=null">`exam_comment_number`,</if>
+
+        </trim>
+    </sql>
+    <sql id="douValueWithoutNullSql">
+        <trim suffixOverrides=",">
+                <choose><when test="id!=null">#{id},</when></choose>
+                <choose><when test="examTitle!=null">#{examTitle},</when></choose>
+                <choose><when test="examContent!=null">#{examContent},</when></choose>
+                <choose><when test="examCreatetime!=null">#{examCreatetime,jdbcType=TIMESTAMP},</when></choose>
+                <choose><when test="userId!=null">#{userId},</when></choose>
+                <choose><when test="examTypeId!=null">#{examTypeId},</when></choose>
+                <choose><when test="examPageView!=null">#{examPageView},</when></choose>
+                <choose><when test="examUpNumber!=null">#{examUpNumber},</when></choose>
+                <choose><when test="examCheckStatus!=null">#{examCheckStatus},</when></choose>
+                <choose><when test="examCommentNumber!=null">#{examCommentNumber},</when></choose>
+        </trim>
+    </sql>
+
+    <sql id="batchDouFieldSql">
+        <trim suffixOverrides=",">
+                <if test="item.id!=null">`id`,</if> `exam_title`,`exam_content`,`exam_createtime`,`user_id`,`exam_type_id`,`exam_page_view`,`exam_up_number`,`exam_check_status`,`exam_comment_number`,
+        </trim>
+    </sql>
+    <sql id="batchDouValueSql">
+        <trim suffixOverrides=",">
+                <choose><when test="item.id!=null">#{item.id},</when></choose>
+                <choose><when test="item.examTitle!=null">#{item.examTitle},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.examContent!=null">#{item.examContent},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.examCreatetime!=null">#{item.examCreatetime,jdbcType=TIMESTAMP},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.userId!=null">#{item.userId},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.examTypeId!=null">#{item.examTypeId},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.examPageView!=null">#{item.examPageView},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.examUpNumber!=null">#{item.examUpNumber},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.examCheckStatus!=null">#{item.examCheckStatus},</when><otherwise>NULL,</otherwise></choose>
+                <choose><when test="item.examCommentNumber!=null">#{item.examCommentNumber},</when><otherwise>NULL,</otherwise></choose>
+        </trim>
+    </sql>
+    <sql id="batchDouFieldWithoutNullSql">
+        <trim suffixOverrides=",">
+                <if test="item.id!=null">`id`,</if>
+                <if test="item.examTitle!=null">`exam_title`,</if>
+                <if test="item.examContent!=null">`exam_content`,</if>
+                <if test="item.examCreatetime!=null">`exam_createtime`,</if>
+                <if test="item.userId!=null">`user_id`,</if>
+                <if test="item.examTypeId!=null">`exam_type_id`,</if>
+                <if test="item.examPageView!=null">`exam_page_view`,</if>
+                <if test="item.examUpNumber!=null">`exam_up_number`,</if>
+                <if test="item.examCheckStatus!=null">`exam_check_status`,</if>
+                <if test="item.examCommentNumber!=null">`exam_comment_number`,</if>
+
+        </trim>
+    </sql>
+    <sql id="batchDouValueWithoutNullSql">
+        <trim suffixOverrides=",">
+                <choose><when test="item.id!=null">#{item.id},</when></choose>
+                <choose><when test="item.examTitle!=null">#{item.examTitle},</when></choose>
+                <choose><when test="item.examContent!=null">#{item.examContent},</when></choose>
+                <choose><when test="item.examCreatetime!=null">#{item.examCreatetime,jdbcType=TIMESTAMP},</when></choose>
+                <choose><when test="item.userId!=null">#{item.userId},</when></choose>
+                <choose><when test="item.examTypeId!=null">#{item.examTypeId},</when></choose>
+                <choose><when test="item.examPageView!=null">#{item.examPageView},</when></choose>
+                <choose><when test="item.examUpNumber!=null">#{item.examUpNumber},</when></choose>
+                <choose><when test="item.examCheckStatus!=null">#{item.examCheckStatus},</when></choose>
+                <choose><when test="item.examCommentNumber!=null">#{item.examCommentNumber},</when></choose>
+        </trim>
+    </sql>
+    <sql id="updateSetSql">
+        <set>
+                    <choose> <when test="examTitle!=null">`exam_title`=#{examTitle}</when> <otherwise> `exam_title`=NULL</otherwise> </choose>,
+                    <choose> <when test="examContent!=null">`exam_content`=#{examContent}</when> <otherwise> `exam_content`=NULL</otherwise> </choose>,
+                    <choose> <when test="examCreatetime!=null">`exam_createtime`=#{examCreatetime,jdbcType=TIMESTAMP}</when> <otherwise> `exam_createtime`=NULL</otherwise> </choose>,
+                    <choose> <when test="userId!=null">`user_id`=#{userId}</when> <otherwise> `user_id`=NULL</otherwise> </choose>,
+                    <choose> <when test="examTypeId!=null">`exam_type_id`=#{examTypeId}</when> <otherwise> `exam_type_id`=NULL</otherwise> </choose>,
+                    <choose> <when test="examPageView!=null">`exam_page_view`=#{examPageView}</when> <otherwise> `exam_page_view`=NULL</otherwise> </choose>,
+                    <choose> <when test="examUpNumber!=null">`exam_up_number`=#{examUpNumber}</when> <otherwise> `exam_up_number`=NULL</otherwise> </choose>,
+                    <choose> <when test="examCheckStatus!=null">`exam_check_status`=#{examCheckStatus}</when> <otherwise> `exam_check_status`=NULL</otherwise> </choose>,
+                    <choose> <when test="examCommentNumber!=null">`exam_comment_number`=#{examCommentNumber}</when> <otherwise> `exam_comment_number`=NULL</otherwise> </choose>,
+        </set>
+    </sql>
+    <sql id="updateSetWithoutNullSql">
+        <set>
+                    <choose><when test="examTitle!=null">`exam_title`=#{examTitle},</when></choose>
+                    <choose><when test="examContent!=null">`exam_content`=#{examContent},</when></choose>
+                    <choose><when test="examCreatetime!=null">`exam_createtime`=#{examCreatetime,jdbcType=TIMESTAMP},</when></choose>
+                    <choose><when test="userId!=null">`user_id`=#{userId},</when></choose>
+                    <choose><when test="examTypeId!=null">`exam_type_id`=#{examTypeId},</when></choose>
+                    <choose><when test="examPageView!=null">`exam_page_view`=#{examPageView},</when></choose>
+                    <choose><when test="examUpNumber!=null">`exam_up_number`=#{examUpNumber},</when></choose>
+                    <choose><when test="examCheckStatus!=null">`exam_check_status`=#{examCheckStatus},</when></choose>
+                    <choose><when test="examCommentNumber!=null">`exam_comment_number`=#{examCommentNumber},</when></choose>
+        </set>
+    </sql>
+    <sql id="magicalcoderPkWhereSql">
+        where 1=1
+            and `id` = #{magicalCoderPrimaryKeyName}
+    </sql>
+    <sql id="updatePkWhereSql">
+        where 1=1
+            and `id` = #{id}
+    </sql>
+    <sql id="batchUpdateSetSql">
+        <set>
+                    <choose> <when test="item.examTitle!=null">`exam_title`=#{item.examTitle}</when> <otherwise> `exam_title`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.examContent!=null">`exam_content`=#{item.examContent}</when> <otherwise> `exam_content`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.examCreatetime!=null">`exam_createtime`=#{item.examCreatetime,jdbcType=TIMESTAMP}</when> <otherwise> `exam_createtime`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.userId!=null">`user_id`=#{item.userId}</when> <otherwise> `user_id`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.examTypeId!=null">`exam_type_id`=#{item.examTypeId}</when> <otherwise> `exam_type_id`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.examPageView!=null">`exam_page_view`=#{item.examPageView}</when> <otherwise> `exam_page_view`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.examUpNumber!=null">`exam_up_number`=#{item.examUpNumber}</when> <otherwise> `exam_up_number`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.examCheckStatus!=null">`exam_check_status`=#{item.examCheckStatus}</when> <otherwise> `exam_check_status`=NULL</otherwise> </choose>,
+                    <choose> <when test="item.examCommentNumber!=null">`exam_comment_number`=#{item.examCommentNumber}</when> <otherwise> `exam_comment_number`=NULL</otherwise> </choose>,
+        </set>
+    </sql>
+    <sql id="batchUpdateWithoutNullSetSql">
+        <set>
+                    <choose> <when test="item.examTitle!=null">`exam_title`=#{item.examTitle},</when></choose>
+                    <choose> <when test="item.examContent!=null">`exam_content`=#{item.examContent},</when></choose>
+                    <choose> <when test="item.examCreatetime!=null">`exam_createtime`=#{item.examCreatetime,jdbcType=TIMESTAMP},</when></choose>
+                    <choose> <when test="item.userId!=null">`user_id`=#{item.userId},</when></choose>
+                    <choose> <when test="item.examTypeId!=null">`exam_type_id`=#{item.examTypeId},</when></choose>
+                    <choose> <when test="item.examPageView!=null">`exam_page_view`=#{item.examPageView},</when></choose>
+                    <choose> <when test="item.examUpNumber!=null">`exam_up_number`=#{item.examUpNumber},</when></choose>
+                    <choose> <when test="item.examCheckStatus!=null">`exam_check_status`=#{item.examCheckStatus},</when></choose>
+                    <choose> <when test="item.examCommentNumber!=null">`exam_comment_number`=#{item.examCommentNumber},</when></choose>
+        </set>
+    </sql>
+    <sql id="batchUpdatePkWhereSql">
+        where 1=1
+            and `id` = #{item.id}
+    </sql>
+    <!-- 这里可以加上数据库名称 方便的切换数据库-->
+    <sql id="tableSql">
+        blogs.liuya_exam
+    </sql>
+
+   <sql id="whereSqlModel">
+        <if test="id!=null "> and `id` = #{id}</if>
+        <if test="examTitle!=null "> and `exam_title` = #{examTitle}</if>
+        <if test="examContent!=null "> and `exam_content` = #{examContent}</if>
+        <if test="examCreatetime!=null "> and `exam_createtime` = #{examCreatetime,jdbcType=TIMESTAMP}</if>
+        <if test="userId!=null "> and `user_id` = #{userId}</if>
+        <if test="examTypeId!=null "> and `exam_type_id` = #{examTypeId}</if>
+        <if test="examPageView!=null "> and `exam_page_view` = #{examPageView}</if>
+        <if test="examUpNumber!=null "> and `exam_up_number` = #{examUpNumber}</if>
+        <if test="examCheckStatus!=null "> and `exam_check_status` = #{examCheckStatus}</if>
+        <if test="examCommentNumber!=null "> and `exam_comment_number` = #{examCommentNumber}</if>
+                <if test="idFirst!=null "> and `id` <![CDATA[=]]>
+                            #{idFirst}
+                </if>
+                <if test="examTitleFirst!=null "> and `exam_title` <![CDATA[=]]>
+                            #{examTitleFirst}
+                </if>
+                <if test="examContentFirst!=null "> and `exam_content` <![CDATA[=]]>
+                            #{examContentFirst}
+                </if>
+                <if test="examCreatetimeFirst!=null "> and `exam_createtime` <![CDATA[>=]]>
+                        #{examCreatetimeFirst,jdbcType=TIMESTAMP}
+                </if>
+                <if test="examCreatetimeSecond!=null "> and `exam_createtime` <![CDATA[<=]]>
+                        #{examCreatetimeSecond,jdbcType=TIMESTAMP}
+                </if>
+                <if test="userIdFirst!=null "> and `user_id` <![CDATA[=]]>
+                            #{userIdFirst}
+                </if>
+                <if test="examTypeIdFirst!=null "> and `exam_type_id` <![CDATA[=]]>
+                            #{examTypeIdFirst}
+                </if>
+                <if test="examPageViewFirst!=null "> and `exam_page_view` <![CDATA[=]]>
+                            #{examPageViewFirst}
+                </if>
+                <if test="examUpNumberFirst!=null "> and `exam_up_number` <![CDATA[=]]>
+                            #{examUpNumberFirst}
+                </if>
+                <if test="examCheckStatusFirst!=null "> and `exam_check_status` <![CDATA[=]]>
+                            #{examCheckStatusFirst}
+                </if>
+                <if test="examCommentNumberFirst!=null "> and `exam_comment_number` <![CDATA[=]]>
+                            #{examCommentNumberFirst}
+                </if>
+        <!--<if test="whereSql!=null"> ${whereSql}</if>-->
+    </sql>
+
+    <sql id="safeGroupBy">
+        <if test="safeGroupBy!=null and safeGroupBy!=''">
+            group by
+            <choose>
+                <when test="safeGroupBy != null and safeGroupBy == 'id'">  `id` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'exam_title'">  `exam_title` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'exam_content'">  `exam_content` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'exam_createtime'">  `exam_createtime` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'user_id'">  `user_id` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'exam_type_id'">  `exam_type_id` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'exam_page_view'">  `exam_page_view` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'exam_up_number'">  `exam_up_number` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'exam_check_status'">  `exam_check_status` </when>
+                <when test="safeGroupBy != null and safeGroupBy == 'exam_comment_number'">  `exam_comment_number` </when>
+            </choose>
+        </if>
+    </sql>
+    <sql id="safeOrderBy">
+        <if test="safeOrderBy!=null and safeOrderBy!=''">
+            <choose>
+                <when test="safeOrderBy != null and safeOrderBy == 'id desc'"> order by  `id` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'id asc'"> order by `id` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_title desc'"> order by  `exam_title` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_title asc'"> order by `exam_title` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_content desc'"> order by  `exam_content` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_content asc'"> order by `exam_content` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_createtime desc'"> order by  `exam_createtime` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_createtime asc'"> order by `exam_createtime` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'user_id desc'"> order by  `user_id` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'user_id asc'"> order by `user_id` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_type_id desc'"> order by  `exam_type_id` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_type_id asc'"> order by `exam_type_id` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_page_view desc'"> order by  `exam_page_view` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_page_view asc'"> order by `exam_page_view` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_up_number desc'"> order by  `exam_up_number` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_up_number asc'"> order by `exam_up_number` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_check_status desc'"> order by  `exam_check_status` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_check_status asc'"> order by `exam_check_status` asc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_comment_number desc'"> order by  `exam_comment_number` desc </when>
+                <when test="safeOrderBy != null and safeOrderBy == 'exam_comment_number asc'"> order by `exam_comment_number` asc </when>
+            </choose>
+        </if>
+    </sql>
+
+    <sql id="orderGroupLimit">
+        <include refid="safeGroupBy"/>
+        <if test="notSafeGroupBy != null and notSafeGroupBy != ''"> group by ${notSafeGroupBy}</if>
+        <include refid="safeOrderBy"/>
+        <if test="notSafeOrderBy != null and notSafeOrderBy != ''"> order by ${notSafeOrderBy}</if>
+        <if test="limit != null"> LIMIT <if test="start != null">#{start},</if>#{limit} </if>
+    </sql>
+
+</mapper>

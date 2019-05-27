@@ -1,0 +1,89 @@
+Manifest-Version: 1.0
+Class-Path: activemq-client-5.14.5.jar guava-18.0.jar swagger-annotati
+ ons-1.5.13.jar activemq-openwire-legacy-5.14.5.jar xml-apis-1.4.01.ja
+ r jackson-core-2.8.10.jar httpcore-4.4.8.jar spring-messaging-4.3.13.
+ RELEASE.jar joda-time-2.9.9.jar spring-beans-4.3.13.RELEASE.jar ribbo
+ n-loadbalancer-2.2.2.jar ant-launcher-1.8.2.jar spring-boot-starter-1
+ .5.9.RELEASE.jar eureka-client-1.6.2.jar ribbon-core-2.2.2.jar spring
+ -security-crypto-4.2.3.RELEASE.jar spring-cloud-netflix-eureka-client
+ -1.3.2.RELEASE.jar spring-security-core-4.2.3.RELEASE.jar validation-
+ api-1.1.0.Final.jar json-lib-2.4-jdk15.jar commons-io-2.4.jar geronim
+ o-jms_1.1_spec-1.1.1.jar servo-internal-0.10.1.jar geronimo-j2ee-mana
+ gement_1.1_spec-1.0.1.jar netflix-infix-0.3.0.jar netty-transport-nat
+ ive-epoll-4.0.27.Final.jar ribbon-httpclient-2.2.2.jar spring-cloud-s
+ tarter-1.2.3.RELEASE.jar okio-1.14.0.jar jetcache-redis-2.5.3.jar com
+ mons-pool2-2.5.0.jar dom4j-1.6.1.jar jettison-1.3.7.jar spring-boot-s
+ tarter-jdbc-1.5.9.RELEASE.jar spring-boot-starter-thymeleaf-1.5.9.REL
+ EASE.jar jboss-logging-3.3.1.Final.jar commons-beanutils-1.9.3.jar sw
+ agger-models-1.5.13.jar reflections-0.9.11.jar logback-classic-1.1.11
+ .jar stax2-api-3.1.4.jar rxnetty-0.4.9.jar activation-1.1.jar thymele
+ af-2.1.6.RELEASE.jar hystrix-core-1.5.12.jar mybatis-spring-boot-auto
+ configure-1.3.2.jar minlog-1.3.0.jar netty-transport-4.0.27.Final.jar
+  tomcat-jdbc-8.5.23.jar jackson-databind-2.6.6.jar jul-to-slf4j-1.7.2
+ 5.jar aopalliance-1.0.jar spring-boot-autoconfigure-1.5.9.RELEASE.jar
+  xstream-1.4.9.jar spring-boot-devtools-1.5.9.RELEASE.jar jsr311-api-
+ 1.1.1.jar spring-boot-starter-activemq-1.5.9.RELEASE.jar ribbon-trans
+ port-2.2.2.jar jetcache-core-2.5.3.jar netty-codec-4.0.27.Final.jar n
+ etflix-statistics-0.1.1.jar bcpkix-jdk15on-1.55.jar springfox-spi-2.7
+ .0.jar eureka-core-1.6.2.jar tomcat-juli-8.5.23.jar thymeleaf-layout-
+ dialect-1.4.0.jar spring-tx-4.3.13.RELEASE.jar lombok-1.16.10.jar pro
+ tostuff-core-1.0.8.jar jcl-over-slf4j-1.7.25.jar jackson-annotations-
+ 2.9.7.jar netflix-eventbus-0.3.0.jar netty-handler-4.0.27.Final.jar p
+ oi-3.9.jar ribbon-2.2.2.jar xmlbeans-2.3.0.jar commons-configuration-
+ 1.8.jar spring-boot-test-1.5.9.RELEASE.jar ezmorph-1.0.6.jar spring-b
+ oot-starter-logging-1.5.9.RELEASE.jar spring-boot-starter-data-redis-
+ 1.5.9.RELEASE.jar spring-boot-starter-mail-1.5.9.RELEASE.jar fastjson
+ -1.2.28.jar byte-buddy-1.6.14.jar protostuff-runtime-1.0.8.jar HdrHis
+ togram-2.1.9.jar spring-web-4.3.13.RELEASE.jar spring-jdbc-4.3.13.REL
+ EASE.jar spring-cloud-starter-eureka-1.3.2.RELEASE.jar springfox-sche
+ ma-2.7.0.jar springfox-swagger-common-2.7.0.jar spring-session-1.3.1.
+ RELEASE.jar jedis-2.9.0.jar spring-boot-configuration-processor-1.5.9
+ .RELEASE.jar spring-boot-starter-tomcat-1.5.9.RELEASE.jar reflectasm-
+ 1.11.3.jar protobuf-java-2.6.0.jar freemarker-2.3.27-incubating.jar m
+ vel2-2.4.0.Final.jar stringtemplate-3.2.1.jar spring-session-data-red
+ is-1.3.1.RELEASE.jar activemq-broker-5.14.5.jar stax-api-1.0-2.jar og
+ nl-3.0.8.jar cglib-3.1.jar tomcat-embed-websocket-8.5.23.jar mybatis-
+ spring-boot-starter-1.3.2.jar protostuff-collectionschema-1.0.8.jar j
+ etcache-autoconfigure-2.5.3.jar commons-collections-3.2.2.jar jetcach
+ e-anno-2.5.3.jar httpmime-4.3.3.jar protostuff-api-1.0.8.jar springfo
+ x-spring-web-2.7.0.jar spring-boot-1.5.9.RELEASE.jar commons-math-2.2
+ .jar netflix-commons-util-0.1.1.jar classmate-1.3.4.jar javassist-3.2
+ 1.0-GA.jar logback-core-1.1.11.jar commons-lang-2.6.jar spring-aop-4.
+ 3.13.RELEASE.jar mybatis-spring-1.3.2.jar spring-jms-4.3.13.RELEASE.j
+ ar archaius-core-0.7.4.jar antlr-runtime-3.4.jar hibernate-validator-
+ 5.3.6.Final.jar spring-core-4.3.13.RELEASE.jar netty-codec-http-4.0.2
+ 7.Final.jar tomcat-embed-el-8.5.23.jar servo-core-0.10.1.jar netty-co
+ mmon-4.0.27.Final.jar javax.mail-1.5.6.jar jetcache-anno-api-2.5.3.ja
+ r spring-cloud-context-1.2.3.RELEASE.jar aspectjweaver-1.8.13.jar jav
+ ax.inject-1.jar httpclient-4.3.1.jar kryo-4.0.2.jar xpp3_min-1.1.4c.j
+ ar poi-scratchpad-3.9.jar poi-ooxml-3.9.jar caffeine-2.3.5.jar stax-a
+ pi-1.0.1.jar spring-cloud-starter-ribbon-1.3.2.RELEASE.jar springfox-
+ swagger-ui-2.7.0.jar spring-cloud-netflix-core-1.3.2.RELEASE.jar hawt
+ buf-1.11.jar jsp-api-2.2.jar alipay-sdk-java-3.0.0.jar spring-context
+ -support-4.3.13.RELEASE.jar commons-codec-1.10.jar rxjava-1.1.10.jar 
+ groovy-2.4.13.jar android-json-0.0.20131108.vaadin1.jar spring-webmvc
+ -4.3.13.RELEASE.jar gson-2.8.2.jar spring-oxm-4.3.13.RELEASE.jar spri
+ ng-expression-4.3.13.RELEASE.jar poi-ooxml-schemas-3.9.jar jetcache-s
+ tarter-redis-2.5.3.jar commons-jxpath-1.3.jar springfox-core-2.7.0.ja
+ r spring-data-commons-1.13.9.RELEASE.jar netty-buffer-4.0.27.Final.ja
+ r mybatis-3.4.6.jar spring-plugin-core-1.2.0.RELEASE.jar spring-boot-
+ starter-aop-1.5.9.RELEASE.jar tomcat-annotations-api-8.5.23.jar druid
+ -1.1.9.jar snakeyaml-1.17.jar spring-boot-starter-security-1.5.9.RELE
+ ASE.jar rxnetty-contexts-0.4.9.jar spring-security-web-4.2.3.RELEASE.
+ jar springfox-swagger2-2.7.0.jar bcprov-jdk15on-1.55.jar thymeleaf-sp
+ ring4-2.1.6.RELEASE.jar mysql-connector-java-8.0.12.jar woodstox-core
+ -asl-4.4.1.jar spring-cloud-starter-archaius-1.3.2.RELEASE.jar spring
+ -security-rsa-1.0.3.RELEASE.jar spring-plugin-metadata-1.2.0.RELEASE.
+ jar slf4j-api-1.7.25.jar spring-boot-starter-web-1.5.9.RELEASE.jar un
+ bescape-1.1.0.RELEASE.jar ribbon-eureka-2.2.2.jar spring-data-keyvalu
+ e-1.2.9.RELEASE.jar rxnetty-servo-0.4.9.jar guice-4.1.0.jar objenesis
+ -2.1.jar ant-1.8.2.jar spring-cloud-commons-1.2.3.RELEASE.jar asm-4.2
+ .jar commons-logging-1.1.1.jar xmlpull-1.1.3.1.jar poi-excelant-3.9.j
+ ar spring-context-4.3.13.RELEASE.jar spring-boot-starter-freemarker-1
+ .5.9.RELEASE.jar mapstruct-1.1.0.Final.jar jersey-client-1.19.1.jar j
+ ersey-apache-client4-1.19.1.jar antlr-2.7.7.jar tomcat-embed-core-8.5
+ .23.jar spring-security-config-4.2.3.RELEASE.jar log4j-over-slf4j-1.7
+ .25.jar spring-data-redis-1.8.9.RELEASE.jar jersey-core-1.19.1.jar ok
+ http-3.9.1.jar
+Main-Class: com.Westworld.blogs.web.YouyabootWebApplication
+

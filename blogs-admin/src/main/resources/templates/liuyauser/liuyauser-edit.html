@@ -1,0 +1,182 @@
+
+<!--
+代码为自动生成 Created by www.magicalcoder.com
+ 如果你改变了此类 read 请将此行删除
+ 欢迎加入官方QQ群:323237052
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:include="magicalcoder/v001/include/head :: commonHead('用户表编辑')"/>
+
+<body class="childrenBody layui-hide">
+<form class="layui-form" style="width:80%;">
+
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_id">
+        <label class="layui-form-label">用户的唯一id</label>
+        <div class="layui-input-block">
+            <input type="text" disabled="true" class="layui-input" name="id"  placeholder="主键自动生成，无需手动编辑,如果重置则变成增加数据"/>
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_name">
+        <label class="layui-form-label">用户的姓名</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="name" placeholder="请输入用户的姓名" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_email">
+        <label class="layui-form-label">用户的邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="email" placeholder="请输入用户的邮箱" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_signature">
+        <label class="layui-form-label">用户的签名</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="signature" placeholder="请输入用户的签名" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_headportrait">
+        <label class="layui-form-label">用户的头像</label>
+        <div class="layui-input-block">
+            <a class="layui-btn a_headportrait " >
+                <i class="layui-icon" >&#xe67c;</i>上传文件或图片
+            </a>
+            <input class="magicalcoder-layupload layui-input" name="headportrait" type="text" lay-verify="magicalCoderVerify" magicalcoder-verify="" value=""  placeholder="用户的头像"/>
+            <div class="layui-upload-list">
+                <img class="layui-textarea layui-upload-img img_headportrait" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_password">
+        <label class="layui-form-label">用户的密码</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="password" placeholder="请输入用户的密码" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_createtime">
+        <label class="layui-form-label">用户的创建时间</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="createtime" placeholder="请输入用户的创建时间" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_gender">
+        <label class="layui-form-label">用户的性别，1男，0女</label>
+        <div class="layui-input-block">
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_age">
+        <label class="layui-form-label">用户的年龄</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="age" placeholder="请输入用户的年龄" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_fans">
+        <label class="layui-form-label">用户的粉丝量</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="fans" placeholder="请输入用户的粉丝量" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_iq">
+        <label class="layui-form-label">用户的iq量</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="iq" placeholder="请输入用户的iq量" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_replyNumber">
+        <label class="layui-form-label">用户的回帖数</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="replyNumber" placeholder="请输入用户的回帖数" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_address">
+        <label class="layui-form-label">用户的地址</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="address" placeholder="请输入用户的地址" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_className">
+        <label class="layui-form-label">用户的班级</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="className" placeholder="请输入用户的班级" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_company">
+        <label class="layui-form-label">用户的所处公司</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="company" placeholder="请输入用户的所处公司" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_status">
+        <label class="layui-form-label">用户是否已经验证</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="status" placeholder="请输入用户是否已经验证" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_nickname">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="nickname" placeholder="请输入昵称" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_phone">
+        <label class="layui-form-label">手机号</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="phone" placeholder="请输入手机号" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_integral">
+        <label class="layui-form-label">积分</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="integral" placeholder="请输入积分" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_wantCity">
+        <label class="layui-form-label">想去的城市</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="wantCity" placeholder="请输入想去的城市" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_job">
+        <label class="layui-form-label">目前的工作</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="job" placeholder="请输入目前的工作" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_roleId">
+        <label class="layui-form-label">角色id</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="roleId" placeholder="请输入角色id" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_schoolId">
+        <label class="layui-form-label">学校的名字，外键</label>
+        <div class="layui-input-block">
+            <select name="schoolId"  data-url="admin/liuya_school_type_rest/search" data-id="id" data-text-fields="id,typeName" class="magicalcoder-foreign-select2 layui-input" lay-ignore="true" lay-verify="magicalCoderVerify" magicalcoder-verify="" data-value=""  placeholder="学校的名字，外键"><option value=""></option></select>
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_lastLogin">
+        <label class="layui-form-label">上次登录时间</label>
+        <div class="layui-input-block">
+            <input type="text"  name="lastLogin" placeholder="请选择上次登录时间"  autocomplete="off" class="magicalcoder-laydate layui-input" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12 security_edit_form_param_follow">
+        <label class="layui-form-label">关注人数</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="follow" placeholder="请输入关注人数" lay-verify="magicalCoderVerify" magicalcoder-verify="" value="" />
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <div class="layui-input-block">
+            <button class="layui-btn security_edit_form_operate_save" lay-submit="" lay-filter="save">立即提交</button>
+            <button type="reset" class="layui-hide layui-btn layui-btn-primary" >重置</button>
+        </div>
+    </div>
+</form>
+    <div th:replace="magicalcoder/v001/include/main-js :: commonMain" />
+    <script type="text/javascript"  th:src="@{/assets/admin/liuyauser/liuyauser-edit.js}"></script>
+</body>
+</html>

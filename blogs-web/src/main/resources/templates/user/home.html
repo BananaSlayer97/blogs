@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: commonHead('用户主页')"></head>
+    <body>
+
+        <div th:replace="common/header :: commonHeader"></div>
+
+
+        <!-- 个人详细信息 -->
+        <div  class="fly-home fly-panel" id="user"></div>
+        <template id="user_template">
+
+            <img src="{{d.user.headportrait}}" alt="贤心"/>
+
+            <h1>{{d.user.name}}</h1>
+
+            <p style="padding: 10px 0; color: #5FB878;">IQ 值：<i>{{d.user.iq}}</i></p>
+
+            <p class="fly-home-info">
+
+                <i class="iconfont icon-shijian"></i><span>{{d.user.createtime}}</span>加入
+                <i class="iconfont icon-chengshi"></i><span>{{d.user.address}}</span>
+            </p>
+
+            <p class="fly-home-sign">{{d.user.signature}}</p>
+
+
+            <div class="fly-sns" data-user="">
+                <a id="addFriend" class="layui-btn layui-btn-primary fly-imActive">关注Ta</a>
+                <a href="javascript:;" class="layui-btn layui-btn-normal fly-imActive" data-type="chat">聊聊天</a>
+            </div>
+
+        </template>
+
+
+    <!-- 最近的提问和最近的回答 -->
+        <div class="layui-container">
+
+          <div class="layui-row layui-col-space15">
+
+              <!--所有的发表-->
+            <div class="layui-col-md6 fly-home-jie" id="articles">
+
+             <template id="articles_template">
+
+              <div class="fly-panel">
+                <h3 class="fly-panel-title">TA最近的提问</h3>
+                <ul class="jie-row">
+
+                 {{#  layui.each(d.articles, function(index, item){ }}
+
+                  <li>
+
+                     <a href="jie/detail?id={{item.id}}&amp;user_id={{d.user.id}}" class="jie-title"> {{item.title}}</a>
+
+                    <i>{{item.createtime}}</i>
+
+                    <em class="layui-hide-xs">{{item.comment_number}}答</em>
+                  </li>
+
+                  {{#  }); }}
+
+
+                  {{#  if(d.articles == 0){ }}
+                       <div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;">
+                            <i style="font-size:14px;">ta还没有发表任何信息啊</i>
+                       </div>
+                  {{#  } }}
+
+                </ul>
+              </div>
+
+           </template>
+
+            </div>
+
+            <!--所有的评论-->
+            <div class="layui-col-md6 fly-home-da" id="commons">
+
+             <template id="commons_template">
+              <div class="fly-panel">
+                <h3 class="fly-panel-title">TA最近的回答</h3>
+                <ul class="home-jieda">
+                  {{#  layui.each(d.commons, function(index, item){ }}
+                      <li>
+                      <p>
+                          <span>{{item.createtime}}</span>
+                            在<a href="jie/detail?id={{item.article_id}}" >{{item.title}}</a>中回答：
+                      </p>
+                          <div class="home-dacontent">
+                             {{item.content}}
+                          </div>
+                      </li>
+                  {{#  }); }}
+                   {{#  if(d.commons == 0){ }}
+                     <div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;">
+                         <span>没有回答任何问题</span>
+                     </div>
+                   {{#  } }}
+                </ul>
+              </div>
+             </template>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div th:replace="common/footer :: commonFooter"></div>
+
+        <script th:src="@{/static/assets/res/layui/layui.js}"></script>
+
+        <script th:src="@{/static/assets/res/js/user/home.js}"></script>
+
+        <script th:replace="common/bottom :: commonBottom"></script>
+
+    </body>
+</html>

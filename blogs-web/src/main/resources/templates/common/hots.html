@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+        <div th:fragment="commonHots" id="index_hots">
+                    <template id="index_hots_template" type="text/html">
+                        <dl class="fly-panel fly-list-one">
+                            <dt class="fly-panel-title"><i class="layui-icon layui-icon-fire"></i>  近期热议</dt>
+                            {{#  layui.each(d.index_hots,function(index, item){ }}
+                            <dd>
+                                <img src="" alt=""/>
+                                <a href="jie/detail?article_id={{item.id}}">{{item.title}}</a>
+                                <span><i class="iconfont icon-pinglun1"></i>{{item.comment_number}}</span>
+                            </dd>
+                               {{#  }); }}
+
+                        </dl>
+                    </template>
+        </div>
+
+</html>
